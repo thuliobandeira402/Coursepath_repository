@@ -1,6 +1,10 @@
 from utils import *
 from time import sleep
 from menubsi import *
+from deep_translator import GoogleTranslator
+from tradutor import *
+
+
 def menu_cursos():
     while True:
         print("-"*50)
@@ -25,3 +29,15 @@ V. para voltar ao menu principal""")
             sleep(2)
             limpar_tela()
             break
+
+
+def menu_idiomas():
+    while True:
+        print("-"*50)
+        print("Configurações de Idioma")
+        print("-"*50)
+        change_language()
+        break
+
+
+

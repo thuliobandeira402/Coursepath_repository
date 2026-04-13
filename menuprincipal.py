@@ -19,8 +19,13 @@ def menu_principal():
             menu_cursos()
         elif escolha == "2":
             print("A ser desenvolvido...")
+            sleep(2)
+            limpar_tela()
         elif escolha == "3":
-            print("A ser desenvolvido...")
+            print("Prosseguindo para o menu de idiomas...")
+            sleep(2)
+            limpar_tela()
+            menu_idiomas()
         elif escolha == "4":
             print("Voltando ao menu inicial...")
             sleep(2)

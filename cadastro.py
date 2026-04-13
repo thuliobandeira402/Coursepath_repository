@@ -28,10 +28,12 @@ def fazer_cadastro(): #Todo o fluxo do cadastro(diminuir linhas da main)
 
         if checar_nome:
             print("Nome válido!")
+            sleep(2)
             limpar_tela()
             break
         else:
             print("Nome inválido! O nome deve conter apenas letras e espaços.")
+            sleep(2)
             limpar_tela()
     while True:
         email = input("Email (Precisa seguir o formato NOME.SOBRENOME@UFRPE.BR): ").strip().lower()
