@@ -11,6 +11,9 @@ def main():
             sleep(1)
             fazer_cadastro()
         elif escolha == "2":
+            print("Prosseguindo para o login...")
+            sleep(2)
+            limpar_tela()
             login()
         elif escolha == "3":
             print("Saindo do programa. Até logo!")
