@@ -1,9 +1,6 @@
 import os
 from deep_translator import GoogleTranslator
-def translating_text(text):
-    translator = GoogleTranslator(source='auto', target='en')
-    translated = translator.translate(text)
-    return translated
+
 
 def variable_options(in_portuguese):
     if in_portuguese:

@@ -5,7 +5,7 @@ from checagem import *
 from menuprincipal import *
 from recoverypassword import *
 
-def login():
+def login(cursor, connection):
     """Função para realizar o login do usuário. Solicita email e senha, verifica as credenciais no banco de dados e 
     direciona para o menu principal se o login for bem-sucedido. Caso contrário, oferece a opção de recuperar a senha."""
     while True:
@@ -33,9 +33,10 @@ def login():
         
         if usuario:
             print("Login bem-sucedido! Proseguindo para o menu principal...")
+            user_id = usuario[0]  # Supondo que o ID do usuário seja a primeira coluna
             sleep(2)
             limpar_tela()
-            menu_principal()
+            menu_principal(cursor, connection, user_id)  # Passar o ID do usuário para o menu principal
             break
         else:
             print("Email ou senha incorretos. Tente novamente.")

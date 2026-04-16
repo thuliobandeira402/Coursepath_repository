@@ -20,7 +20,7 @@ def menu_inicial():
     return escolha
 
 
-def fazer_cadastro(): #Todo o fluxo do cadastro(diminuir linhas da main)
+def fazer_cadastro(cursor, connection): #Todo o fluxo do cadastro(diminuir linhas da main)
     #fiz primeiramente o código utilizando ifs aninhados, porém após revisar o código com a claude resolvi mudar para a metodologia early return
     while True:
         nome = input("Nome: ").strip()
@@ -28,19 +28,23 @@ def fazer_cadastro(): #Todo o fluxo do cadastro(diminuir linhas da main)
 
         if checar_nome:
             print("Nome válido!")
+            sleep(2)
             limpar_tela()
             break
         else:
             print("Nome inválido! O nome deve conter apenas letras e espaços.")
+            sleep(2)
             limpar_tela()
     while True:
         email = input("Email (Precisa seguir o formato NOME.SOBRENOME@UFRPE.BR): ").strip().lower()
         if check_email(email):
             print("Email válido!")
+            sleep(2)
             limpar_tela()
             break
         else:
             print("Email inválido! O email deve seguir o formato: NOME.SOBRENOME@UFRPE.BR")
+            sleep(2)
             limpar_tela()
             
     while True:
@@ -68,6 +72,10 @@ def fazer_cadastro(): #Todo o fluxo do cadastro(diminuir linhas da main)
         sleep(2)
         limpar_tela()
         usuario = buscar_usuario_por_email(email)
+        if usuario is None:
+            print("Erro: usuário não encontrado após cadastro.")
+            sleep(2)
+            return
         print("\n CONFIRA SEUS DADOS CADASTRADOS:")
         print(f"  Nome:  {usuario[0]}")
         print(f"  Email: {usuario[1]}")

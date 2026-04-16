@@ -1,4 +1,5 @@
 from utils import *
+from tradutor import *
 import textwrap
 from time import sleep
 INTRODUCTION_TEXT = ("""O objetivo principal do curso de Bacharelado em Sistemas de Informação é formar 
@@ -28,6 +29,8 @@ def bsi():
             escolha = input("Opção: ").strip()
         if escolha == "1":
             print("A ser desenvolvido...")
+            sleep(2)
+            limpar_tela()
         elif escolha == "2":
             print("Voltando para o menu de cursos...")
             sleep(2)
