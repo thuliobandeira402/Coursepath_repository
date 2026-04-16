@@ -1,7 +1,7 @@
 from cadastro import *
 from login import *
 from utils import *
-import sqlite3
+from sqlite3 import *
 
 def criar_tabela(): #Criar tabela de usuários para cadastro no banco de dados
     connection = sqlite3.connect('banco.db')
@@ -17,6 +17,7 @@ def criar_tabela(): #Criar tabela de usuários para cadastro no banco de dados
 
 connection = sqlite3.connect('banco.db')
 cursor = connection.cursor()
+
 def main():
     while True:
         limpar_tela()
@@ -27,12 +28,12 @@ def main():
             sleep(1)
             fazer_cadastro(cursor, connection)
         elif escolha == "2":
-            print("Prosseguindo para o login...")
+            print("Prosseguindo para o login...🔄​")
             sleep(2)
             limpar_tela()
             login(cursor, connection)
         elif escolha == "3":
-            print("Saindo do programa. Até logo!")
+            print("Saindo do programa. Até logo!🔄​")
             sleep(2)
             limpar_tela()
             break

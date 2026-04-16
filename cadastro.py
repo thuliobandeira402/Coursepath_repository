@@ -2,21 +2,21 @@ import re
 import sqlite3
 from utils import *
 from checagem import *
-from database import *
 from time import sleep
 
 def menu_inicial():
-    print("="*50)
-    print("            COURSEPATH")
-    print("="*50)
-    print("""Escolha:  
-    1. Cadastrar-se
-    2. Login
-    3. Sair""")
-    escolha = input("Opção: ").strip()
+    print("\033[1;36m=\033[0m"*50)
+    print("\033[1;36m|                👾​COURSEPATH🤖​                  |\033[0m")      
+    print("\033[1;36m=\033[0m"*50)
+    print("""| Escolha:                                       |
+|    \033[1;34m[1]\033[0m. Cadastrar-se                           |
+|    \033[1;34m[2]\033[0m. Login                                  |
+|    \033[1;34m[3]\033[0m. Sair                                   |
+\033[1;36m==================================================\033[0m""")                                                       
+    escolha = input("Opção:").strip()
     while escolha not in ["1", "2", "3"]:
-        print("Opção inválida. Tente novamente.")
-        escolha = input("Opção: ").strip()
+        print("\033[1;31mOpção inválida. Tente novamente.❌​\033[0m")
+        escolha = input("Opção:").strip()
     return escolha
 
 
@@ -27,62 +27,60 @@ def fazer_cadastro(cursor, connection): #Todo o fluxo do cadastro(diminuir linha
         checar_nome = check_nome(nome)
 
         if checar_nome:
-            print("Nome válido!")
-            sleep(2)
+            print("\033[1;32mNome válido✅​​!\033[0m")
             limpar_tela()
             break
         else:
-            print("Nome inválido! O nome deve conter apenas letras e espaços.")
+            print("\033[1;31mNome inválido!❌​ O nome deve conter apenas letras e espaços.​\033[0m")
             sleep(2)
             limpar_tela()
+        
     while True:
         email = input("Email (Precisa seguir o formato NOME.SOBRENOME@UFRPE.BR): ").strip().lower()
         if check_email(email):
-            print("Email válido!")
+            print("\033[1;32mEmail válido✅​​!\033[0m")
             sleep(2)
             limpar_tela()
             break
         else:
-            print("Email inválido! O email deve seguir o formato: NOME.SOBRENOME@UFRPE.BR")
+            print("\033[1;31mEmail inválido!❌​ O email deve seguir o formato: NOME.SOBRENOME@UFRPE.BR\033[0m")
             sleep(2)
             limpar_tela()
             
     while True:
         senha = input("Senha: ").strip()
         if check_senha(senha):
-            print("Senha válida!")
-            repetir_senha = input("Repita a senha: ").strip()
+            print("\033[1;32mSenha válida✅!\033[0m")
+            repetir_senha = input("Repita a senha:").strip()
             if senha == repetir_senha:
-                print("As senhas coincidem.")
+                print("\033[1;32mAs senhas coincidem✅!\033[0m")
                 break
             else:
-                print("As senhas não coincidem.")
+                print("\033[1;31mAs senhas não coincidem.❌​\033[0m")
+                sleep(2)       
         else:
-            print("Senha inválida! A senha deve conter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula, um número e um caractere especial.")
+            print("\033[1;31mSenha inválida!❌​ A senha deve conter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula, um número e um caractere especial.\033[0m")
+            sleep(2)
             limpar_tela()
     
 
     if not cadastrar_usuario(nome, email, senha):
-        print("Erro ao cadastrar usuário.")
+        print("\033[1;31mErro ao cadastrar usuário.❌​\033[0m")
         return
 # Aqui termina o cadastro e inicia o U do CRUD, onde o usuário pode atualizar seus dados cadastrados
     while True:
         sleep(2)
-        print("Cadastro realizado com sucesso!")
+        print("\033[1;32mCadastro realizado com sucesso!✅​\033[0m")
         sleep(2)
         limpar_tela()
         usuario = buscar_usuario_por_email(email)
-        if usuario is None:
-            print("Erro: usuário não encontrado após cadastro.")
-            sleep(2)
-            return
         print("\n CONFIRA SEUS DADOS CADASTRADOS:")
         print(f"  Nome:  {usuario[0]}")
         print(f"  Email: {usuario[1]}")
         print("="*50)
         print("""Deseja alterar algum dado cadastrado?
-        1. Sim
-        2. Não (Sair e fazer login)""")
+        [1]. Sim
+        [2]. Não (Sair e fazer login)""")
         if input("Opção: ").strip() == "2":
             print("Faça login para acessar sua conta.")
             break
@@ -101,7 +99,7 @@ def cadastrar_usuario(nome, email, senha):
         return True
     except sqlite3.IntegrityError:
         connection.close()
-        print("Erro: Email já cadastrado.")
+        print("\033[1;31mErro: Email já cadastrado.❌​\033[0m")
         return False
     
 def buscar_usuario_por_email(email): # Buscar por algum usuario no banco de dados(a ideia é mostrar os dados do usuário)
@@ -118,28 +116,28 @@ def atualizar_dados(email_atual): # ATUALIZAR O EMAIL OU O NOME E JOGAR ELES NA 
     email = usuario[1]     
 
     print("""Digite qual dado você deseja alterar:
-1. Nome
-2. Email
-3. Voltar para o menu principal""")
+[1]. Nome
+[2]. Email
+[3]. Voltar para o menu principal""")
     escolha = input("Opção: ").strip()
     while escolha not in ["1", "2", "3"]:
-        print("Opção inválida. Tente novamente.")
+        print("\033[1;31mOpção inválida.❌​ Tente novamente.\033[0m")
         escolha = input("Opção: ").strip()
 
     if escolha == "3":
-        print("Voltando para o menu principal.")
+        print("\033[1;33mVoltando para o menu principal.🔄​\033[0m")
         return
     
     elif escolha == "2":
         email = input("Digite o novo email: ").strip()
 
         if not check_email(email): # checa se o return de check_email é false, ou seja, se o email é inválido
-            print("Email inválido! O email deve seguir o formato: NOME.SOBRENOME@UFRPE.BR")
+            print("\033[1;31mEmail inválido!❌​ O email deve seguir o formato: NOME.SOBRENOME@UFRPE.BR\033[0m")
             return
     elif escolha == "1":
         nome = input("Digite o novo nome: ").strip()
         while not nome: # checa se o nome é vazio, ou seja, se o return de not nome é true
-            print("Nome não pode ser vazio.")
+            print("\033[1;31mNome não pode ser vazio.❌​\033[0m")
             nome = input("Digite o novo nome: ").strip()
 
     atualizar_dados_banco(email_atual, email, nome) # joga os dados atualizados na função de update do banco de dados
@@ -157,5 +155,5 @@ def atualizar_dados_banco(email_atual, novo_email, novo_nome): # Update do banco
     cursor.execute("UPDATE contas_curso SET nome = ?, email = ? WHERE email = ?", (novo_nome, novo_email, email_atual))
     connection.commit()
     connection.close()
-    print("Dados atualizados com sucesso!")
+    print("\033[1;32mDados atualizados com sucesso✅​!\033[0m")
 

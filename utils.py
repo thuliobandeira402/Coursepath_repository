@@ -4,13 +4,13 @@ from deep_translator import GoogleTranslator
 
 def variable_options(in_portuguese):
     if in_portuguese:
-        print("""1. Prosseguir para o menu de estudos extra sobre o curso
-2. Voltar para o menu de cursos
-3. Traduzir para o idioma anterior""")
+        print("""\033[1;34m1.\033[0m Prosseguir para o menu de estudos extra sobre o curso
+\033[1;34m2.\033[0m Voltar para o menu de cursos
+\033[1;34m3.\033[0m Traduzir para o idioma anterior""")
     else:
-        print("""1. Prosseguir para o menu de estudos extra sobre o curso
-2. Voltar para o menu de cursos
-3. Traduzir para Português""")
+        print("""\033[1;34m[1].\033[0m Prosseguir para o menu de estudos extra sobre o curso
+\033[1;34m[2].\033[0m Voltar para o menu de cursos
+\033[1;34m[3].\033[0m Traduzir para Português""")
   
 
 def limpar_tela():

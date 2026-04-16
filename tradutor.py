@@ -2,8 +2,6 @@ from deep_translator import GoogleTranslator
 from time import sleep
 from utils import *
 
-# english: en
-
 language = 'en'
 idiomas_disponiveis = GoogleTranslator(source='auto', target='en').get_supported_languages(as_dict=True)
 
@@ -20,10 +18,9 @@ def change_language():
         nova_lingua = input("Digite o idioma desejado (ex: 'en' para inglês, 'pt' para português) (Pode digitar o nome do idioma também): ").strip().lower()
         if nova_lingua in idiomas_disponiveis.keys() or nova_lingua in idiomas_disponiveis.values():
             language = nova_lingua
-            print(f"Idioma alterado para {language}.")
+            print(f"\033[1;32mIdioma alterado para {language}.​​✅​\033[0m")
             sleep(2)
-            limpar_tela()
             return
         else:
-            print("Idioma não suportado. Mantendo o idioma atual.")
+            print("\033[1;31mIdioma não suportado.​❌​ Mantendo o idioma atual.​\033[0m")
             sleep(2)

@@ -16,20 +16,20 @@ def recuperar_senha(email):
             if check_senha(nova_senha) == True:
                 break
             else:
-                print("Senha inválida! A senha deve conter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula, um número e um caractere especial.")
+                print("\033[1;31mSenha inválida​❌​! A senha deve conter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula, um número e um caractere especial.\033[0m")
         while True:
             confirmar_senha = input("Confirme sua nova senha: ").strip()
             if nova_senha == confirmar_senha:
                 break
             else:
-                print("As senhas não coincidem. Tente novamente.")
+                print("\033[1;31mAs senhas não coincidem. Tente novamente.❌​\033[0m")
         if nova_senha == confirmar_senha:
             cursor.execute("UPDATE contas_curso SET senha = ? WHERE email = ?", (nova_senha, email))
             connection.commit()
-            print("Senha atualizada com sucesso!")
+            print("\033[1;32mSenha atualizada com sucesso!✅​\033[0m")
         else:
-            print("As senhas não coincidem. Tente novamente.")
+            print("\033[1;31mAs senhas não coincidem. Tente novamente.❌​\033[0m")
     else:
-        print("Email não encontrado. Verifique o email digitado.")
+        print("\033[1;31mEmail não encontrado. Verifique o email digitado.❌​\033[0m")
     
     connection.close()

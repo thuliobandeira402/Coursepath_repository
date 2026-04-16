@@ -14,13 +14,13 @@ def login(cursor, connection):
             if check_email(email) == True:
                 break
             else: 
-                print("Email inválido. Certifique-se de usar o formato NOME.SOBRENOME@UFRPE.BR")
+                print("\033[1;31mEmail inválido❌​. Certifique-se de usar o formato NOME.SOBRENOME@UFRPE.BR\033[0m")
         while True:
             senha = input("Digite sua Senha: ").strip()
             if check_senha(senha) == True:
                 break
             else: 
-                print("Senha inválida. A senha deve conter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula, um número e um caractere especial.")
+                print("\033[1;31mSenha inválida❌​. A senha deve conter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula, um número e um caractere especial.\033[0m")
                 forgot_password = input("Esqueci minha senha. Deseja recuperar? (s/n): ").strip().lower()
                 if forgot_password == 's': 
                     recuperar_senha(email)
@@ -32,14 +32,14 @@ def login(cursor, connection):
         usuario = cursor.fetchone()
         
         if usuario:
-            print("Login bem-sucedido! Proseguindo para o menu principal...")
-            user_id = usuario[0]  # Supondo que o ID do usuário seja a primeira coluna
+            print("\033[1;32mLogin bem-sucedido!✅​ Proseguindo...")
+            user_id = usuario[0]  # Supondo que o ID do usuário seja a primeira coluna para o menu principal...\033[0m")
             sleep(2)
             limpar_tela()
-            menu_principal(cursor, connection, user_id)  # Passar o ID do usuário para o menu principal
+            menu_principal(cursor, connection, user_id)
             break
         else:
-            print("Email ou senha incorretos. Tente novamente.")
+            print("\033[1;31mEmail ou senha incorretos❌​. Tente novamente.\033[0m")
             forgot_password = input("Esqueci minha senha. Deseja recuperar? (s/n): ").strip().lower()
             if forgot_password == 's': 
                 recuperar_senha(email)

@@ -12,27 +12,27 @@ e modificar o contexto sócio-político-econômico-científico no qual se encont
 def bsi():
     in_portuguese = False
     while True:
-        print("-"*50)
-        print("BSI".center(50))
-        print("-"*50)
+        print("\033[1;36m=\033[0m"*78)
+        print("\033[1;36m|                                    BSI                                     |\033[0m")
+        print("\033[1;36m=\033[0m"*78)
         if in_portuguese:
             formatted = textwrap.fill(INTRODUCTION_TEXT, width=80)
         else:
             translated = translating_text(INTRODUCTION_TEXT)
             formatted = textwrap.fill(translated, width=80)
         print(formatted)
-        print("-"*50)
+        print("\033[1;36m=\033[0m"*78)
         variable_options(in_portuguese)
         escolha = input("Opção: ").strip()
         while escolha not in ["1", "2", "3"]:
-            print("Opção inválida. Tente novamente.")
+            print("\033[1;31mOpção inválida.❌​ Tente novamente.​\033[0m")
             escolha = input("Opção: ").strip()
         if escolha == "1":
-            print("A ser desenvolvido...")
+            print("\033[1;33mA ser desenvolvido...🔄​\033[0m")
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("Voltando para o menu de cursos...")
+            print("Voltando para o menu de cursos...🔄​")
             sleep(2)
             limpar_tela()
             break
