@@ -2,6 +2,7 @@ from utils import *
 from tradutor import *
 import textwrap
 from time import sleep
+from semestre import *
 INTRODUCTION_TEXT = ("""O objetivo principal do curso de Bacharelado em Sistemas de Informação é formar 
 profissionais munidos de conhecimentos técnicos e científicos, para o desenvolvimento de sistemas de informação
 intensivos em software nas mais variadas complexidades. O egresso será capaz de projetar, implantar, gerenciar
@@ -28,9 +29,10 @@ def bsi():
             print("\033[1;31mOpção inválida.❌​ Tente novamente.​\033[0m")
             escolha = input("Opção: ").strip()
         if escolha == "1":
-            print("\033[1;33mA ser desenvolvido...🔄​\033[0m")
+            print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
+            semestres_menu()
         elif escolha == "2":
             print("Voltando para o menu de cursos...🔄​")
             sleep(2)
