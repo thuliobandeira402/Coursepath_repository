@@ -29,3 +29,12 @@ def variable_options_cadeiras(in_portuguese):
 \033[1;34m[2].\033[0m Artigo 02
 \033[1;34m[3].\033[0m Traduzir para Português
 \033[1;34m[4].\033[0m Sair""")
+        
+def variable_options_articles(in_portuguese):
+    if in_portuguese:
+        print("""\033[1;34m[1].\033[0m Traduzir para o idioma anterior
+\033[1;34m[2].\033[0m Sair""")
+        
+    else:
+        print("""\033[1;34m[1].\033[0m Traduzir para Português
+\033[1;34m[2].\033[0m Sair""")

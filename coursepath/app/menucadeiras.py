@@ -2,7 +2,8 @@ from utils import *
 from tradutor import *
 import textwrap
 from time import sleep
-
+from artigos_periodo1 import *
+from artigos_periodo2 import *
 INTRODUCTION_TEXT_PROJETOINTERDISCIPLINAR01 = ("""O projeto interdisciplinar em Sistemas de Informação visa integrar conhecimentos teóricos e práticos de diversas disciplinas 
 para desenvolver soluções tecnológicas reais (softwares, aplicativos, análise de dados) a problemas organizacionais. Geralmente focado no desenvolvimento 
 de sistemas, gestão de TI ou segurança, promove trabalho em equipe e metodologias ágeis.""")
@@ -31,6 +32,10 @@ organizacional.""")
 INTRODUCTION_TEXT_FUNDAMENTOSDESSISTEMASDEINFORMACAO =("""Um Sistema de Informação é um conjunto de componentes inter-relacionados que trabalham juntos para coletar, processar, armazenar e distribuir
 informações, visando apoiar a tomada de decisão, a coordenação e o controle dentro de uma organização. Eles não apenas automatizam tarefas, mas integram dados para proporcionar uma visão holística dos negócios.""")
 
+INTRODUCTION_TEXT_PROJETOINTERDISCIPLINAR02 = INTRODUCTION_TEXT_PROJETOINTERDISCIPLINAR01
+
+
+
 def projeto_interdisciplinar_menu():
     in_portuguese = False
     while True:
@@ -53,11 +58,12 @@ def projeto_interdisciplinar_menu():
             print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
+            artigos_01_projeto_interdisciplinar01_detalhes()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("CARREGANDO...🔄​")
             sleep(2)
             limpar_tela()
-            break
+            artigos_02_projeto_interdisciplinar01_detalhes()
         elif escolha == "3" and in_portuguese:
             in_portuguese = False
             sleep(2)
@@ -80,9 +86,9 @@ def projeto_interdisciplinar02_menu():
         print("\033[1;36m|                                    PROJETO INTERDISCIPLINAR 02                                    |\033[0m")
         print("\033[1;36m=\033[0m"*101)
         if in_portuguese:
-            formatted = textwrap.fill(INTRODUCTION_TEXT_PROJETOINTERDISCIPLINAR01, width=80)
+            formatted = textwrap.fill(INTRODUCTION_TEXT_PROJETOINTERDISCIPLINAR02, width=80)
         else:
-            translated = translating_text(INTRODUCTION_TEXT_PROJETOINTERDISCIPLINAR01)
+            translated = translating_text(INTRODUCTION_TEXT_PROJETOINTERDISCIPLINAR02)
             formatted = textwrap.fill(translated, width=80)
         print(formatted)
         print("\033[1;36m=\033[0m"*101)
@@ -95,11 +101,12 @@ def projeto_interdisciplinar02_menu():
             print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
+            artigos_01_metodologia()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("CARREGANDO...🔄​")
             sleep(2)
             limpar_tela()
-            break
+            artigos_02_metodologia()
         elif escolha == "3" and in_portuguese:
             in_portuguese = False
             sleep(2)
@@ -117,16 +124,16 @@ def projeto_interdisciplinar02_menu():
 def fundamentos_matematicos01_menu():
     in_portuguese = False
     while True:
-        print("\033[1;36m=\033[0m"*100)
+        print("\033[1;36m=\033[0m"*101)
         print("\033[1;36m|                                    FUNDAMENTOS MATEMÁTICOS 01                                    |\033[0m")
-        print("\033[1;36m=\033[0m"*100)
+        print("\033[1;36m=\033[0m"*101)
         if in_portuguese:
             formatted = textwrap.fill(INTRODUCTION_TEXT_FUNDAMENTOSMATEMATICOS01, width=80)
         else:
             translated = translating_text(INTRODUCTION_TEXT_FUNDAMENTOSMATEMATICOS01)
             formatted = textwrap.fill(translated, width=80)
         print(formatted)
-        print("\033[1;36m=\033[0m"*100)
+        print("\033[1;36m=\033[0m"*101)
         variable_options_cadeiras(in_portuguese)
         escolha = input("Opção: ").strip()
         while escolha not in ["1", "2", "3", "4"]:
@@ -136,11 +143,12 @@ def fundamentos_matematicos01_menu():
             print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
+            artigos_01_fundamentos_matematicos()
         elif escolha == "2":
             print("Voltando para o menu de cadeiras...🔄​")
             sleep(2)
             limpar_tela()
-            break
+            artigos_02_fundamentos_matematicos()
         elif escolha == "3" and in_portuguese:
             in_portuguese = False
             sleep(2)
@@ -178,11 +186,12 @@ def fundamentos_matematicos02_menu():
             print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
+            artigos_01_algebra_linear()
         elif escolha == "2":
             print("Voltando para o menu de cadeiras...🔄​")
             sleep(2)
             limpar_tela()
-            break
+            artigos_02_algebra_linear()
         elif escolha == "3" and in_portuguese:
             in_portuguese = False
             sleep(2)
@@ -201,16 +210,16 @@ def fundamentos_matematicos02_menu():
 def principios_de_programacao_menu():
     in_portuguese = False
     while True:
-        print("\033[1;36m=\033[0m"*100)
-        print("\033[1;36m|                                    PRINCIPIOS DE PROGRAMAÇÃO                                     |\033[0m")
-        print("\033[1;36m=\033[0m"*100)
+        print("\033[1;36m=\033[0m"*101)
+        print("\033[1;36m|                                    PRINCIPIOS DE PROGRAMAÇÃO                                    |\033[0m")
+        print("\033[1;36m=\033[0m"*101)
         if in_portuguese:
             formatted = textwrap.fill(INTRODUCTION_TEXT_PRINCIPIOSDEPROGRAMACAO, width=80)
         else:
             translated = translating_text(INTRODUCTION_TEXT_PRINCIPIOSDEPROGRAMACAO)
             formatted = textwrap.fill(translated, width=80)
         print(formatted)
-        print("\033[1;36m=\033[0m"*100)
+        print("\033[1;36m=\033[0m"*101)
         variable_options_cadeiras(in_portuguese)
         escolha = input("Opção: ").strip()
         while escolha not in ["1", "2", "3", "4"]:
@@ -220,11 +229,12 @@ def principios_de_programacao_menu():
             print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
+            artigos_01_principios()
         elif escolha == "2":
             print("Voltando para o menu de cadeiras...🔄​")
             sleep(2)
             limpar_tela()
-            break
+            artigos_02_principios()
         elif escolha == "3" and in_portuguese:
             in_portuguese = False
             sleep(2)
@@ -243,30 +253,31 @@ def principios_de_programacao_menu():
 def sustentabilidade_e_sistemas_de_informacao_menu():
     in_portuguese = False
     while True:
-        print("\033[1;36m=\033[0m"*115)
-        print("\033[1;36m|                                   SUSTENTABILIDADE E SISTEMAS DE INFORMAÇÃO                                     |\033[0m")
-        print("\033[1;36m=\033[0m"*115)
+        print("\033[1;36m=\033[0m"*101)
+        print("\033[1;36m|                                    SUSTENTABILIDADE E SISTEMAS DE INFORMAÇÃO                                    |\033[0m")
+        print("\033[1;36m=\033[0m"*101)
         if in_portuguese:
             formatted = textwrap.fill(INTRODUCTION_TEXT_SUSTENTABILIDADEESISTEMASDEINFORMACAO, width=80)
         else:
             translated = translating_text(INTRODUCTION_TEXT_SUSTENTABILIDADEESISTEMASDEINFORMACAO)
             formatted = textwrap.fill(translated, width=80)
         print(formatted)
-        print("\033[1;36m=\033[0m"*115)
+        print("\033[1;36m=\033[0m"*101)
         variable_options_cadeiras(in_portuguese)
         escolha = input("Opção: ").strip()
-        while escolha not in ["1", "2" , "3", "4"]:
+        while escolha not in ["1", "2", "3", "4"]:
             print("\033[1;31mOpção inválida.❌​ Tente novamente.​\033[0m")
             escolha = input("Opção: ").strip()
         if escolha == "1":
             print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
+            artigos_01_sustentabilidade()
         elif escolha == "2":
             print("Voltando para o menu de cadeiras...🔄​")
             sleep(2)
             limpar_tela()
-            break
+            artigos_02_sustentabilidade()
         elif escolha == "3" and in_portuguese:
             in_portuguese = False
             sleep(2)
@@ -284,30 +295,31 @@ def sustentabilidade_e_sistemas_de_informacao_menu():
 def introducao_a_sistemas_de_administracao_menu():
     in_portuguese = False
     while True:
-        print("\033[1;36m=\033[0m"*112)
-        print("\033[1;36m|                                   INTRODUÇÃO A SISTEMAS DE ADMINISTRAÇÃO                                     |\033[0m")
-        print("\033[1;36m=\033[0m"*112)
+        print("\033[1;36m=\033[0m"*101)
+        print("\033[1;36m|                                    INTRODUÇÃO A SISTEMAS DE ADMINISTRAÇÃO                                    |\033[0m")
+        print("\033[1;36m=\033[0m"*101)
         if in_portuguese:
             formatted = textwrap.fill(INTRODUCTION_TEXT_INTRODUCAOASISTEMASDEADMINISTRACAO, width=80)
         else:
             translated = translating_text(INTRODUCTION_TEXT_INTRODUCAOASISTEMASDEADMINISTRACAO)
             formatted = textwrap.fill(translated, width=80)
         print(formatted)
-        print("\033[1;36m=\033[0m"*112)
+        print("\033[1;36m=\033[0m"*101)
         variable_options_cadeiras(in_portuguese)
         escolha = input("Opção: ").strip()
-        while escolha not in ["1", "2" , "3", "4"]:
+        while escolha not in ["1", "2", "3", "4"]:
             print("\033[1;31mOpção inválida.❌​ Tente novamente.​\033[0m")
             escolha = input("Opção: ").strip()
         if escolha == "1":
             print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
+            artigos_01_administracao()
         elif escolha == "2":
             print("Voltando para o menu de cadeiras...🔄​")
             sleep(2)
             limpar_tela()
-            break
+            artigos_02_administracao()
         elif escolha == "3" and in_portuguese:
             in_portuguese = False
             sleep(2)
@@ -321,7 +333,6 @@ def introducao_a_sistemas_de_administracao_menu():
             sleep(2)
             limpar_tela()
             break
-
             
 def fundamentos_de_problemas_computacionais_menu():
     in_portuguese = False
@@ -345,11 +356,12 @@ def fundamentos_de_problemas_computacionais_menu():
             print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
+            artigos_01_fundamentos_computacionais()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("CARREGANDO...🔄​")
             sleep(2)
             limpar_tela()
-            break
+            artigos_02_fundamentos_computacionais()
         elif escolha == "3" and in_portuguese:
             in_portuguese = False
             sleep(2)
@@ -375,7 +387,7 @@ def elementos_de_sistemas_computacionais_menu():
         else:
             translated = translating_text(INTRODUCTION_TEXT_ELEMENTOSDESISTEMASCOMPUTACIONAIS)
             formatted = textwrap.fill(translated, width=80)
-            print(formatted)
+        print(formatted)
         print("\033[1;36m=\033[0m"*110)
         variable_options_cadeiras(in_portuguese)
         escolha = input("Opção: ").strip()
@@ -386,11 +398,12 @@ def elementos_de_sistemas_computacionais_menu():
             print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
+            artigos_01_elementos_sistemas()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
-            break
+            artigos_02_elementos_sistemas()
         elif escolha == "3" and in_portuguese:
             in_portuguese = False
             sleep(2)
@@ -417,7 +430,7 @@ def fundamentos_de_sistemas_de_informacao_menu():
         else:
             translated = translating_text(INTRODUCTION_TEXT_FUNDAMENTOSDESSISTEMASDEINFORMACAO)
             formatted = textwrap.fill(translated, width=80)
-            print(formatted)
+        print(formatted)
         print("\033[1;36m=\033[0m"*110)
         variable_options_cadeiras(in_portuguese)
         escolha = input("Opção: ").strip()
@@ -428,11 +441,12 @@ def fundamentos_de_sistemas_de_informacao_menu():
             print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
+            artigos_01_sistemas_informacao()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
-            break
+            artigos_02_sistemas_informacao()
         elif escolha == "3" and in_portuguese:
             in_portuguese = False
             sleep(2)
