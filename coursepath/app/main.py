@@ -2,18 +2,8 @@ from cadastro import *
 from login import *
 from utils import *
 from sqlite3 import *
+from database import criar_tabela
 
-def criar_tabela(): #Criar tabela de usuários para cadastro no banco de dados
-    connection = sqlite3.connect('banco.db')
-    cursor = connection.cursor()
-    cursor.execute("""CREATE TABLE IF NOT EXISTS contas_curso (
-                            id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            nome TEXT NOT NULL,
-                            email TEXT UNIQUE NOT NULL,
-                            senha TEXT NOT NULL
-                        )""")
-    connection.commit()
-    connection.close()
 
 connection = sqlite3.connect('banco.db')
 cursor = connection.cursor()
@@ -39,3 +29,20 @@ def main():
             break
 if __name__ == "__main__":
     main()
+
+
+
+def menu_inicial():
+    print("\033[1;36m=\033[0m"*50)
+    print("\033[1;36m|                👾​COURSEPATH🤖​                  |\033[0m")      
+    print("\033[1;36m=\033[0m"*50)
+    print("""| Escolha:                                       |
+|    \033[1;34m[1]\033[0m. Cadastrar-se                           |
+|    \033[1;34m[2]\033[0m. Login                                  |
+|    \033[1;34m[3]\033[0m. Sair                                   |
+\033[1;36m==================================================\033[0m""")                                                       
+    escolha = input("Opção:").strip()
+    while escolha not in ["1", "2", "3"]:
+        print("\033[1;31mOpção inválida. Tente novamente.❌​\033[0m")
+        escolha = input("Opção:").strip()
+    return escolha

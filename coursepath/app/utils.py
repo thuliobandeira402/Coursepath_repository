@@ -3,6 +3,8 @@ from deep_translator import GoogleTranslator
 
 
 def variable_options(in_portuguese):
+    """"função que cria 2 variaveis para o menu de um curso, varia de acordo com
+    o idioma do texto"""
     if in_portuguese:
         print("""\033[1;34m1.\033[0m Prosseguir para o menu de estudos extra sobre o curso
 \033[1;34m2.\033[0m Voltar para o menu de cursos
@@ -18,6 +20,8 @@ def limpar_tela():
 
 
 def variable_options_cadeiras(in_portuguese):
+    """Menu que varia as opções para o menu de cadeiras, varia de acordo com
+    o idioma do texto"""
     if in_portuguese:
         print("""\033[1;34m1.\033[0m Artigo 01
 \033[1;34m2.\033[0m Artigo 02
@@ -31,6 +35,8 @@ def variable_options_cadeiras(in_portuguese):
 \033[1;34m[4].\033[0m Sair""")
         
 def variable_options_articles(in_portuguese):
+    """Menu que varia as opções para o menu de artigo, varia de acordo com
+    o idioma do texto"""
     if in_portuguese:
         print("""\033[1;34m[1].\033[0m Traduzir para o idioma anterior
 \033[1;34m[2].\033[0m Sair""")
