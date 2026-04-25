@@ -44,3 +44,15 @@ def variable_options_articles(in_portuguese):
     else:
         print("""\033[1;34m[1].\033[0m Traduzir para Português
 \033[1;34m[2].\033[0m Sair""")
+        
+def variable_options_addarticle(in_portuguese):
+    """Menu que varia as opções para o menu de adicionar artigo, varia de acordo com
+    o idioma do texto"""
+    if in_portuguese:
+        print("""\033[1;34m[1]\033[0m. Alterar idioma
+\033[1;34m[2]\033[0m. Traduzir para o idioma anterior
+\033[1;34m[3]\033[0m. Sair""")    
+    else:
+        print("""\033[1;34m[1]\033[0m. Alterar idioma
+\033[1;34m[2]\033[0m. Traduzir para português
+\033[1;34m[3]\033[0m. Sair""")

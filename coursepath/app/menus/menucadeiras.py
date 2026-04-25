@@ -60,7 +60,7 @@ def projeto_interdisciplinar_menu():
             limpar_tela()
             artigos_01_projeto_interdisciplinar01_detalhes()
         elif escolha == "2":
-            print("CARREGANDO...🔄​")
+            print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             artigos_02_projeto_interdisciplinar01_detalhes()
@@ -73,7 +73,7 @@ def projeto_interdisciplinar_menu():
             sleep(2)
             limpar_tela() 
         elif escolha == "4":
-            print("Voltando para o menu de cadeiras...🔄​" )
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             break
@@ -103,7 +103,7 @@ def projeto_interdisciplinar02_menu():
             limpar_tela()
             artigos_01_metodologia()
         elif escolha == "2":
-            print("CARREGANDO...🔄​")
+            print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             artigos_02_metodologia()
@@ -116,7 +116,7 @@ def projeto_interdisciplinar02_menu():
             sleep(2)
             limpar_tela() 
         elif escolha == "4":
-            print("Voltando para o menu de cadeiras...🔄​" )
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             break
@@ -125,7 +125,7 @@ def fundamentos_matematicos01_menu():
     in_portuguese = False
     while True:
         print("\033[1;36m=\033[0m"*101)
-        print("\033[1;36m|                                    FUNDAMENTOS MATEMÁTICOS 01                                    |\033[0m")
+        print("\033[1;36m|                                    FUNDAMENTOS MATEMÁTICOS 01                                     |\033[0m")
         print("\033[1;36m=\033[0m"*101)
         if in_portuguese:
             formatted = textwrap.fill(INTRODUCTION_TEXT_FUNDAMENTOSMATEMATICOS01, width=80)
@@ -145,7 +145,7 @@ def fundamentos_matematicos01_menu():
             limpar_tela()
             artigos_01_fundamentos_matematicos()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             artigos_02_fundamentos_matematicos()
@@ -158,7 +158,7 @@ def fundamentos_matematicos01_menu():
             sleep(2)
             limpar_tela() 
         elif escolha == "4":
-            print("Voltando para o menu de cadeiras...🔄​" )
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             break
@@ -188,7 +188,7 @@ def fundamentos_matematicos02_menu():
             limpar_tela()
             artigos_01_algebra_linear()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             artigos_02_algebra_linear()
@@ -201,7 +201,7 @@ def fundamentos_matematicos02_menu():
             sleep(2)
             limpar_tela() 
         elif escolha == "4":
-            print("Voltando para o menu de cadeiras...🔄​" )
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             break
@@ -211,7 +211,7 @@ def principios_de_programacao_menu():
     in_portuguese = False
     while True:
         print("\033[1;36m=\033[0m"*101)
-        print("\033[1;36m|                                    PRINCIPIOS DE PROGRAMAÇÃO                                    |\033[0m")
+        print("\033[1;36m|                                     PRINCIPIOS DE PROGRAMAÇÃO                                     |\033[0m")
         print("\033[1;36m=\033[0m"*101)
         if in_portuguese:
             formatted = textwrap.fill(INTRODUCTION_TEXT_PRINCIPIOSDEPROGRAMACAO, width=80)
@@ -231,7 +231,7 @@ def principios_de_programacao_menu():
             limpar_tela()
             artigos_01_principios()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             artigos_02_principios()
@@ -244,7 +244,7 @@ def principios_de_programacao_menu():
             sleep(2)
             limpar_tela() 
         elif escolha == "4":
-            print("Voltando para o menu de cadeiras...🔄​" )
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             break
@@ -254,7 +254,7 @@ def sustentabilidade_e_sistemas_de_informacao_menu():
     in_portuguese = False
     while True:
         print("\033[1;36m=\033[0m"*101)
-        print("\033[1;36m|                                    SUSTENTABILIDADE E SISTEMAS DE INFORMAÇÃO                                    |\033[0m")
+        print("\033[1;36m|                             SUSTENTABILIDADE E SISTEMAS DE INFORMAÇÃO                             |\033[0m")
         print("\033[1;36m=\033[0m"*101)
         if in_portuguese:
             formatted = textwrap.fill(INTRODUCTION_TEXT_SUSTENTABILIDADEESISTEMASDEINFORMACAO, width=80)
@@ -274,7 +274,7 @@ def sustentabilidade_e_sistemas_de_informacao_menu():
             limpar_tela()
             artigos_01_sustentabilidade()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             artigos_02_sustentabilidade()
@@ -287,7 +287,7 @@ def sustentabilidade_e_sistemas_de_informacao_menu():
             sleep(2)
             limpar_tela() 
         elif escolha == "4":
-            print("Voltando para o menu de cadeiras...🔄​" )
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             break
@@ -296,7 +296,7 @@ def introducao_a_sistemas_de_administracao_menu():
     in_portuguese = False
     while True:
         print("\033[1;36m=\033[0m"*101)
-        print("\033[1;36m|                                    INTRODUÇÃO A SISTEMAS DE ADMINISTRAÇÃO                                    |\033[0m")
+        print("\033[1;36m|                               INTRODUÇÃO A SISTEMAS DE ADMINISTRAÇÃO                              |\033[0m")
         print("\033[1;36m=\033[0m"*101)
         if in_portuguese:
             formatted = textwrap.fill(INTRODUCTION_TEXT_INTRODUCAOASISTEMASDEADMINISTRACAO, width=80)
@@ -316,7 +316,7 @@ def introducao_a_sistemas_de_administracao_menu():
             limpar_tela()
             artigos_01_administracao()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             artigos_02_administracao()
@@ -329,7 +329,7 @@ def introducao_a_sistemas_de_administracao_menu():
             sleep(2)
             limpar_tela() 
         elif escolha == "4":
-            print("Voltando para o menu de cadeiras...🔄​" )
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             break
@@ -358,7 +358,7 @@ def fundamentos_de_problemas_computacionais_menu():
             limpar_tela()
             artigos_01_fundamentos_computacionais()
         elif escolha == "2":
-            print("CARREGANDO...🔄​")
+            print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             artigos_02_fundamentos_computacionais()
@@ -371,7 +371,7 @@ def fundamentos_de_problemas_computacionais_menu():
             sleep(2)
             limpar_tela() 
         elif escolha == "4":
-            print("Voltando para o menu de cadeiras...🔄​" )
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             break
@@ -413,7 +413,7 @@ def elementos_de_sistemas_computacionais_menu():
             sleep(2)
             limpar_tela() 
         elif escolha == "4":
-            print("Voltando para o menu de cadeiras...🔄​" )
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             break
@@ -456,7 +456,7 @@ def fundamentos_de_sistemas_de_informacao_menu():
             sleep(2)
             limpar_tela() 
         elif escolha == "4":
-            print("Voltando para o menu de cadeiras...🔄​" )
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             break

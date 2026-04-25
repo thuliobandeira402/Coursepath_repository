@@ -1,8 +1,9 @@
+from menus.adicionartigos import menu_adicionar_artigo
 from others.utils import *
 from time import sleep
 from menus.cursos import *
 from user.userconfig import *
-
+from menus.adicionartigos import *
 
 def menu_principal(cursor, connection, user_id):
     while True:
@@ -12,9 +13,10 @@ def menu_principal(cursor, connection, user_id):
         print("""\033[1;34m[1]\033[0m. Ver Cursos Disponíveis
 \033[1;34m[2]\033[0m. Alterar idioma do menu de cursos
 \033[1;34m[3]\033[0m. Alterar dados do usuário
-\033[1;34m[4]\033[0m. Sair""")
+\033[1;34m[4]\033[0m. Adicionar artigo para leitura
+\033[1;34m[5]\033[0m. Sair""")
         escolha = input("Digite o número da opção desejada: ").strip()
-        while escolha not in ["1", "2", "3", "4"]:
+        while escolha not in ["1", "2", "3", "4", "5"]:
             print("\033[1;31mOpção inválida. Tente novamente.❌​\033[0m")
             escolha = input("Digite o número da opção desejada: ").strip()
         if escolha == "1":
@@ -31,7 +33,12 @@ def menu_principal(cursor, connection, user_id):
             limpar_tela()
             menu_config(cursor, connection, user_id)
         elif escolha == "4":
-            print("Voltando ao menu inicial...")
+            print("\033[1;33mProsseguindo para o menu de tradução de artigos...!🔄​\033[0m")
+            sleep(2)
+            limpar_tela()
+            menu_adicionar_artigo(cursor, connection, user_id)
+        elif escolha == "5":
+            print("\033[1;33mVoltando ao menu inicial...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             break

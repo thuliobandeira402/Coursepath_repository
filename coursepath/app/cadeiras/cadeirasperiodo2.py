@@ -23,27 +23,27 @@ def cadeiras_menu02():
             limpar_tela()
             projeto_interdisciplinar02_menu()
         elif escolha == "2":
-            print("CARREGANDO...🔄​")
+            print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             fundamentos_matematicos02_menu()
         elif escolha == "3":
-            print("CARREGANDO...🔄​")
+            print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela() 
             fundamentos_de_problemas_computacionais_menu()
         elif escolha == "4":
-            print("CARREGANDO...🔄​")
+            print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()   
             elementos_de_sistemas_computacionais_menu()    
         elif escolha == "5":    
-            print("CARREGANDO...🔄​")
+            print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             fundamentos_de_sistemas_de_informacao_menu()
         elif escolha == "6":
-            print("Voltando para o menu de semestres...🔄​")
+            print("\033[1;33mVoltando para o menu de semestres...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             break

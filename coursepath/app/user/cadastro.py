@@ -3,12 +3,12 @@ from verifications.checagem_email_senha_nome import *
 from time import sleep
 from sqlite.database import *
 from user.read import read_cadastro
-from sqlite.database import check_email_existe
+
 
 def fazer_cadastro(cursor, connection): 
     """Fluxo do cadastro organizado"""
     while True: # inserir nome
-        nome = input("Nome: ").strip()
+        nome = input("\033[1;33mNome: \033[0m").strip()
         checar_nome = check_nome(nome)
         if checar_nome:
             print("\033[1;32mNome válido✅​​!\033[0m")
@@ -21,7 +21,7 @@ def fazer_cadastro(cursor, connection):
             limpar_tela()
         
     while True: # inserir email
-        email = input("Email (Precisa seguir o formato NOME.SOBRENOME@UFRPE.BR): ").strip().lower()
+        email = input("\033[1;33mEmail (Precisa seguir o formato NOME.SOBRENOME@UFRPE.BR): \033[0m").strip().lower()
         if check_email(email):
             if not check_email_existe(email):
                 print("\033[1;32mEmail válido✅​​!\033[0m")
@@ -39,10 +39,10 @@ def fazer_cadastro(cursor, connection):
             limpar_tela()
             
     while True: #inserir senha
-        senha = input("Senha: ").strip()
+        senha = input("\033[1;33mSenha: \033[0m").strip()
         if check_senha(senha):
             print("\033[1;32mSenha válida✅!\033[0m")
-            repetir_senha = input("Repita a senha:").strip()
+            repetir_senha = input("\033[1;33mRepita a senha: \033[0m").strip()
             if senha == repetir_senha:
                 print("\033[1;32mAs senhas coincidem✅!\033[0m")
                 sleep(2)

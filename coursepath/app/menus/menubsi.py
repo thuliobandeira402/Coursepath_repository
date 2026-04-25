@@ -33,15 +33,15 @@ def bsi():
             sleep(2)
             limpar_tela()
             semestres_menu()
-        elif escolha == "2":
-            print("Voltando para o menu de cursos...🔄​")
-            sleep(2)
-            limpar_tela()
-            break
-        elif escolha == "3" and in_portuguese:
+        if escolha == "3" and in_portuguese:
             in_portuguese = False
             sleep(2)
             limpar_tela()
+        elif escolha == "2":
+            print("\033[1;33mVoltando para o menu de cursos...🔄​\033[0m")
+            sleep(2)
+            limpar_tela()
+            break
         elif escolha == "3":
             in_portuguese = True
             sleep(2)

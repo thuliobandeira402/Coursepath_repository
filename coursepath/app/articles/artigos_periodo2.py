@@ -393,7 +393,7 @@ def artigos_01_metodologia():
             translated = translating_text(artigo_01_metodologia['introduction'])
             introduction = textwrap.fill(translated, width=100)
         print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                           ARTIGO: {artigo_01_metodologia['title']}                        |\033[0m""")
+        print(f"""\033[1;36m|                                    ARTIGO: {artigo_01_metodologia['title']}                                 |\033[0m""")
         print("\033[1;36m=\033[0m"*110)
         print(f"""\033[1;33mAutores:\033[0m {artigo_01_metodologia['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
@@ -413,7 +413,7 @@ def artigos_01_metodologia():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             break
@@ -428,7 +428,7 @@ def artigos_02_metodologia():
             translated = translating_text(artigo_02_metodologia['introduction'])
             introduction = textwrap.fill(translated, width=100)
         print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                           ARTIGO: {artigo_02_metodologia['title']}                        |\033[0m""")
+        print(f"""\033[1;36m|                                   ARTIGO: {artigo_02_metodologia['title']}                                |\033[0m""")
         print("\033[1;36m=\033[0m"*110)
         print(f"""\033[1;33mAutores:\033[0m {artigo_02_metodologia['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
@@ -448,7 +448,7 @@ def artigos_02_metodologia():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             break
@@ -463,7 +463,7 @@ def artigos_01_algebra_linear():
             translated = translating_text(artigo_01_algebra_linear['introduction'])
             introduction = textwrap.fill(translated, width=100)
         print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                           ARTIGO: {artigo_01_algebra_linear['title']}                        |\033[0m""")
+        print(f"""\033[1;36m|                                    ARTIGO: {artigo_01_algebra_linear['title']}                                  |\033[0m""")
         print("\033[1;36m=\033[0m"*110)
         print(f"""\033[1;33mAutores:\033[0m {artigo_01_algebra_linear['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
@@ -483,7 +483,7 @@ def artigos_01_algebra_linear():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m ")
             sleep(2)
             limpar_tela()
             break
@@ -498,7 +498,7 @@ def artigos_02_algebra_linear():
             translated = translating_text(artigo_02_algebra_linear['introduction'])
             introduction = textwrap.fill(translated, width=100)
         print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                           ARTIGO: {artigo_02_algebra_linear['title']}                        |\033[0m""")
+        print(f"""\033[1;36m|                                      ARTIGO: {artigo_02_algebra_linear['title']}                                   |\033[0m""")
         print("\033[1;36m=\033[0m"*110)
         print(f"""\033[1;33mAutores:\033[0m {artigo_02_algebra_linear['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
@@ -518,7 +518,7 @@ def artigos_02_algebra_linear():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m ")
             sleep(2)
             limpar_tela()
             break
@@ -533,7 +533,7 @@ def artigos_01_fundamentos_computacionais():
             translated = translating_text(artigo_01_fundamentos_computacionais['introduction'])
             introduction = textwrap.fill(translated, width=100)
         print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                           ARTIGO: {artigo_01_fundamentos_computacionais['title']}                        |\033[0m""")
+        print(f"""\033[1;36m|                                              ARTIGO: {artigo_01_fundamentos_computacionais['title']}                                            |\033[0m""")
         print("\033[1;36m=\033[0m"*110)
         print(f"""\033[1;33mAutores:\033[0m {artigo_01_fundamentos_computacionais['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
@@ -553,7 +553,7 @@ def artigos_01_fundamentos_computacionais():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m ")
             sleep(2)
             limpar_tela()
             break
@@ -568,7 +568,7 @@ def artigos_02_fundamentos_computacionais():
             translated = translating_text(artigo_02_fundamentos_computacionais['introduction'])
             introduction = textwrap.fill(translated, width=100)
         print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                           ARTIGO: {artigo_02_fundamentos_computacionais['title']}                        |\033[0m""")
+        print(f"""\033[1;36m|                                                ARTIGO: {artigo_02_fundamentos_computacionais['title']}                                          |\033[0m""")
         print("\033[1;36m=\033[0m"*110)
         print(f"""\033[1;33mAutores:\033[0m {artigo_02_fundamentos_computacionais['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
@@ -588,7 +588,7 @@ def artigos_02_fundamentos_computacionais():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m ")
             sleep(2)
             limpar_tela()
             break
@@ -603,7 +603,7 @@ def artigos_01_elementos_sistemas():
             translated = translating_text(artigo_01_elementos_sistemas['introduction'])
             introduction = textwrap.fill(translated, width=100)
         print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                           ARTIGO: {artigo_01_elementos_sistemas['title']}                        |\033[0m""")
+        print(f"""\033[1;36m|                                    ARTIGO: {artigo_01_elementos_sistemas['title']}                               |\033[0m""")
         print("\033[1;36m=\033[0m"*110)
         print(f"""\033[1;33mAutores:\033[0m {artigo_01_elementos_sistemas['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
@@ -623,7 +623,7 @@ def artigos_01_elementos_sistemas():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m ")
             sleep(2)
             limpar_tela()
             break
@@ -638,7 +638,7 @@ def artigos_02_elementos_sistemas():
             translated = translating_text(artigo_02_elementos_sistemas['introduction'])
             introduction = textwrap.fill(translated, width=100)
         print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                           ARTIGO: {artigo_02_elementos_sistemas['title']}                        |\033[0m""")
+        print(f"""\033[1;36m|                                ARTIGO: {artigo_02_elementos_sistemas['title']}                              |\033[0m""")
         print("\033[1;36m=\033[0m"*110)
         print(f"""\033[1;33mAutores:\033[0m {artigo_02_elementos_sistemas['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
@@ -658,7 +658,7 @@ def artigos_02_elementos_sistemas():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             break
@@ -673,7 +673,7 @@ def artigos_01_sistemas_informacao():
             translated = translating_text(artigo_01_sistemas_informacao['introduction'])
             introduction = textwrap.fill(translated, width=100)
         print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                           ARTIGO: {artigo_01_sistemas_informacao['title']}                        |\033[0m""")
+        print(f"""\033[1;36m|                                    ARTIGO: {artigo_01_sistemas_informacao['title']}                                  |\033[0m""")
         print("\033[1;36m=\033[0m"*110)
         print(f"""\033[1;33mAutores:\033[0m {artigo_01_sistemas_informacao['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
@@ -693,7 +693,7 @@ def artigos_01_sistemas_informacao():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             break
@@ -708,7 +708,7 @@ def artigos_02_sistemas_informacao():
             translated = translating_text(artigo_02_sistemas_informacao['introduction'])
             introduction = textwrap.fill(translated, width=100)
         print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                           ARTIGO: {artigo_02_sistemas_informacao['title']}                        |\033[0m""")
+        print(f"""\033[1;36m|                                   ARTIGO: {artigo_02_sistemas_informacao['title']}                                |\033[0m""")
         print("\033[1;36m=\033[0m"*110)
         print(f"""\033[1;33mAutores:\033[0m {artigo_02_sistemas_informacao['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
@@ -728,7 +728,7 @@ def artigos_02_sistemas_informacao():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("Voltando para o menu de cadeiras...🔄​")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             break

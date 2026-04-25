@@ -12,19 +12,22 @@ def read_cadastro(email_atual):
             print("\033[1;31mErro: usuário não encontrado após cadastro.❌\033[0m")
             sleep(2)
             return
-        print("\n CONFIRA SEUS DADOS CADASTRADOS:")
-        print(f"  Nome:  {usuario[0]}")
-        print(f"  Email: {usuario[1]}")
-        print("="*50)
+        print("\033[1;36m=\033[0m"*50)
+        print("|         \033[1;36mCONFIRA SEUS DADOS CADASTRADOS:        |\033[0m")
+        print("\033[1;36m=\033[0m"*50)
+        print(f"  \033[1;34mNome:\033[0m  {usuario[0]}")
+        print(f"  \033[1;34mEmail:\033[0m {usuario[1]}")
+        print("\033[1;36m=\033[0m"*50)
         print("""Deseja alterar algum dado cadastrado?
-        [1]. Sim
-        [2]. Não (Sair e fazer login)""")
+        \033[1;34m[1]\033[0m. Sim
+        \033[1;34m[2]\033[0m. Não (Sair e fazer login)""")
+        print("\033[1;36m=\033[0m"*50)
         escolha = input("Opção: ").strip()
         while escolha not in ["1","2"]:
             print("\033[1;31mOpção inválida. Tente novamente.❌​\033[0m")
             escolha = input("Opção:").strip()
         if escolha == "2":
-            print("Faça login para acessar sua conta.")
+            print("\033[1;33mFaça login para acessar sua conta.\033[0m")
             sleep(2)
             return
         sleep(2)

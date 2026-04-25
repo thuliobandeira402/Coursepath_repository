@@ -16,9 +16,9 @@ def change_language():
     global language
     while True:
         nova_lingua = input("""Digite o idioma desejado:
-                            'en' para inglês    'pt' para português  'es' para espanhol    
-                            'fr' para francês  'de' para alemão    'it' para italiano
-                            'ru' para russo        'ja' para japonês     'zh' para chinês
+\033[1;34m[en]\033[0m para inglês   \033[1;34m[pt]\033[0m para português \033[1;34m[es]\033[0m para espanhol    
+\033[1;34m[fr]\033[0m para francês  \033[1;34m[de]\033[0m para alemão    \033[1;34m[it]\033[0m para italiano
+\033[1;34m[ru]\033[0m para russo    \033[1;34m[ja]\033[0m para japonês   \033[1;34m[zh]\033[0m para chinês
 
     Opção:
     """).strip().lower()
@@ -30,3 +30,11 @@ def change_language():
         else:
             print("\033[1;31mIdioma não suportado.​❌​ Mantendo o idioma atual.​\033[0m")
             sleep(2)
+
+
+def traduzir_e_printar():
+    change_language()
+    print("Carregando o texto traduzido...🔄​")
+    sleep(2)
+    limpar_tela()
+   

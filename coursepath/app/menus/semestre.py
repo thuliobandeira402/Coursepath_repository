@@ -22,13 +22,13 @@ def semestres_menu():
             limpar_tela()
             cadeiras_menu01()
         elif escolha == "2":
-            print("CARREGANDO...🔄​")
+            print("\033[1;33mCARREGANDO...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             cadeiras_menu02()
 
         elif escolha == "3":
-            print("Voltando para o menu de cursos...🔄​")
+            print("\033[1;33mVoltando para o menu de cursos...🔄​\033[0m")
             sleep(2)
             limpar_tela() 
             break

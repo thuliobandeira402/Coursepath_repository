@@ -2,10 +2,8 @@ from user.cadastro import fazer_cadastro
 from user.login import *
 from others.utils import *
 from sqlite.database import *
-from menus.menuinicial import menu_inicial
-import sqlite
-
-
+from menus.menuinicial import *
+from time import sleep
 connection = sqlite3.connect('banco.db')
 cursor = connection.cursor()
 
@@ -23,15 +21,15 @@ def main():
             escolha = input("Opção:").strip()
         if escolha == "1": #cadastramento do usuário
             limpar_tela()
-            sleep(1)
+            sleep(2)
             fazer_cadastro(cursor, connection)
         elif escolha == "2":
-            print("Prosseguindo para o login...🔄​")
+            print("\033[1;33mProsseguindo para o login...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             login(cursor, connection)
         elif escolha == "3":
-            print("Saindo do programa. Até logo!🔄​")
+            print("\033[1;33mSaindo do programa. Até logo!🔄​\033[0m")
             sleep(2)
             limpar_tela()
             break
