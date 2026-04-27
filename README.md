@@ -222,7 +222,7 @@ Operações implementadas (CRUD completo):
 
 ---
 
-## 👨‍💻 Autor
+## 👨‍💻 Autores
 
 Desenvolvido por **Thulio Bandeira e Rivan Barroso**  
 Curso: Bacharelado em Sistemas de Informação — UFRPE  
