@@ -53,6 +53,11 @@ def login(cursor, connection):
             sleep(2)
             limpar_tela()
             forgot_password = input("\033[1;33mEsqueci minha senha. Deseja recuperar? (s/n): \033[0m").strip().lower()
+            while forgot_password not in ['s', 'n']:
+                print("\033[1;31mOpção inválida❌​. Digite 's' para sim ou 'n' para não.\033[0m")
+                sleep(2)
+                limpar_tela()
+                forgot_password = input("\033[1;33mEsqueci minha senha. Deseja recuperar? (s/n): \033[0m").strip().lower()
             if forgot_password == 's': 
                 recuperar_senha(email)
             sleep(2)
