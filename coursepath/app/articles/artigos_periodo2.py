@@ -392,17 +392,23 @@ def artigos_01_metodologia():
         else:
             translated = translating_text(artigo_01_metodologia['introduction'])
             introduction = textwrap.fill(translated, width=100)
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                                    ARTIGO: {artigo_01_metodologia['title']}                                 |\033[0m""")
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;33mAutores:\033[0m {artigo_01_metodologia['authors']}
+        def imprimir_cabecalho():
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;36m|                                    ARTIGO: {artigo_01_metodologia['title']}                                 |\033[0m""")
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;33mAutores:\033[0m {artigo_01_metodologia['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
 \033[1;33mLink:\033[0m {artigo_01_metodologia['link']}""")
-        print("\033[1;36m=\033[0m"*110)
+            print("\033[1;36m=\033[0m"*110)
+        imprimir_cabecalho()
         variable_options_articles(in_portuguese)
         escolha = input("Opção: ").strip()
-        while escolha not in ["1", "2"]:
-            print("\033[1;31mOpção inválida.❌​ Tente novamente.​\033[0m")
+        while escolha not in ["1", "2", "3"]:
+            print("\033[1;31mOpção inválida.❌ Tente novamente.\033[0m")
+            sleep(2)
+            limpar_tela()
+            imprimir_cabecalho()
+            variable_options_articles(in_portuguese)
             escolha = input("Opção: ").strip()
         if in_portuguese == True and escolha == "1":
             in_portuguese = False
@@ -413,10 +419,15 @@ def artigos_01_metodologia():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄\033[0m")
             sleep(2)
             limpar_tela()
             break
+        elif escolha == "3":
+            print("\033[1;33mVoltando para o menu principal...🔄\033[0m")
+            sleep(2)
+            limpar_tela()
+            return 'menu_principal'
 
 
 def artigos_02_metodologia():
@@ -427,17 +438,23 @@ def artigos_02_metodologia():
         else:
             translated = translating_text(artigo_02_metodologia['introduction'])
             introduction = textwrap.fill(translated, width=100)
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                                   ARTIGO: {artigo_02_metodologia['title']}                                |\033[0m""")
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;33mAutores:\033[0m {artigo_02_metodologia['authors']}
+        def imprimir_cabecalho():
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;36m|                                   ARTIGO: {artigo_02_metodologia['title']}                                |\033[0m""")
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;33mAutores:\033[0m {artigo_02_metodologia['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
 \033[1;33mLink:\033[0m {artigo_02_metodologia['link']}""")
-        print("\033[1;36m=\033[0m"*110)
+            print("\033[1;36m=\033[0m"*110)
+        imprimir_cabecalho()
         variable_options_articles(in_portuguese)
         escolha = input("Opção: ").strip()
-        while escolha not in ["1", "2"]:
-            print("\033[1;31mOpção inválida.❌​ Tente novamente.​\033[0m")
+        while escolha not in ["1", "2", "3"]:
+            print("\033[1;31mOpção inválida.❌ Tente novamente.\033[0m")
+            sleep(2)
+            limpar_tela()
+            imprimir_cabecalho()
+            variable_options_articles(in_portuguese)
             escolha = input("Opção: ").strip()
         if in_portuguese == True and escolha == "1":
             in_portuguese = False
@@ -448,10 +465,15 @@ def artigos_02_metodologia():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄\033[0m")
             sleep(2)
             limpar_tela()
             break
+        elif escolha == "3":
+            print("\033[1;33mVoltando para o menu principal...🔄\033[0m")
+            sleep(2)
+            limpar_tela()
+            return 'menu_principal'
 
 
 def artigos_01_algebra_linear():
@@ -462,17 +484,23 @@ def artigos_01_algebra_linear():
         else:
             translated = translating_text(artigo_01_algebra_linear['introduction'])
             introduction = textwrap.fill(translated, width=100)
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                                    ARTIGO: {artigo_01_algebra_linear['title']}                                  |\033[0m""")
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;33mAutores:\033[0m {artigo_01_algebra_linear['authors']}
+        def imprimir_cabecalho():
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;36m|                                    ARTIGO: {artigo_01_algebra_linear['title']}                                  |\033[0m""")
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;33mAutores:\033[0m {artigo_01_algebra_linear['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
 \033[1;33mLink:\033[0m {artigo_01_algebra_linear['link']}""")
-        print("\033[1;36m=\033[0m"*110)
+            print("\033[1;36m=\033[0m"*110)
+        imprimir_cabecalho()
         variable_options_articles(in_portuguese)
         escolha = input("Opção: ").strip()
-        while escolha not in ["1", "2"]:
-            print("\033[1;31mOpção inválida.❌​ Tente novamente.​\033[0m")
+        while escolha not in ["1", "2", "3"]:
+            print("\033[1;31mOpção inválida.❌ Tente novamente.\033[0m")
+            sleep(2)
+            limpar_tela()
+            imprimir_cabecalho()
+            variable_options_articles(in_portuguese)
             escolha = input("Opção: ").strip()
         if in_portuguese == True and escolha == "1":
             in_portuguese = False
@@ -483,10 +511,15 @@ def artigos_01_algebra_linear():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m ")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄\033[0m")
             sleep(2)
             limpar_tela()
             break
+        elif escolha == "3":
+            print("\033[1;33mVoltando para o menu principal...🔄\033[0m")
+            sleep(2)
+            limpar_tela()
+            return 'menu_principal'
 
 
 def artigos_02_algebra_linear():
@@ -497,17 +530,23 @@ def artigos_02_algebra_linear():
         else:
             translated = translating_text(artigo_02_algebra_linear['introduction'])
             introduction = textwrap.fill(translated, width=100)
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                                      ARTIGO: {artigo_02_algebra_linear['title']}                                   |\033[0m""")
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;33mAutores:\033[0m {artigo_02_algebra_linear['authors']}
+        def imprimir_cabecalho():
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;36m|                                      ARTIGO: {artigo_02_algebra_linear['title']}                                   |\033[0m""")
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;33mAutores:\033[0m {artigo_02_algebra_linear['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
 \033[1;33mLink:\033[0m {artigo_02_algebra_linear['link']}""")
-        print("\033[1;36m=\033[0m"*110)
+            print("\033[1;36m=\033[0m"*110)
+        imprimir_cabecalho()
         variable_options_articles(in_portuguese)
         escolha = input("Opção: ").strip()
-        while escolha not in ["1", "2"]:
-            print("\033[1;31mOpção inválida.❌​ Tente novamente.​\033[0m")
+        while escolha not in ["1", "2", "3"]:
+            print("\033[1;31mOpção inválida.❌ Tente novamente.\033[0m")
+            sleep(2)
+            limpar_tela()
+            imprimir_cabecalho()
+            variable_options_articles(in_portuguese)
             escolha = input("Opção: ").strip()
         if in_portuguese == True and escolha == "1":
             in_portuguese = False
@@ -518,10 +557,15 @@ def artigos_02_algebra_linear():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m ")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄\033[0m")
             sleep(2)
             limpar_tela()
             break
+        elif escolha == "3":
+            print("\033[1;33mVoltando para o menu principal...🔄\033[0m")
+            sleep(2)
+            limpar_tela()
+            return 'menu_principal'
 
 
 def artigos_01_fundamentos_computacionais():
@@ -532,17 +576,23 @@ def artigos_01_fundamentos_computacionais():
         else:
             translated = translating_text(artigo_01_fundamentos_computacionais['introduction'])
             introduction = textwrap.fill(translated, width=100)
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                                              ARTIGO: {artigo_01_fundamentos_computacionais['title']}                                            |\033[0m""")
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;33mAutores:\033[0m {artigo_01_fundamentos_computacionais['authors']}
+        def imprimir_cabecalho():
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;36m|                                              ARTIGO: {artigo_01_fundamentos_computacionais['title']}                                            |\033[0m""")
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;33mAutores:\033[0m {artigo_01_fundamentos_computacionais['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
 \033[1;33mLink:\033[0m {artigo_01_fundamentos_computacionais['link']}""")
-        print("\033[1;36m=\033[0m"*110)
+            print("\033[1;36m=\033[0m"*110)
+        imprimir_cabecalho()
         variable_options_articles(in_portuguese)
         escolha = input("Opção: ").strip()
-        while escolha not in ["1", "2"]:
-            print("\033[1;31mOpção inválida.❌​ Tente novamente.​\033[0m")
+        while escolha not in ["1", "2", "3"]:
+            print("\033[1;31mOpção inválida.❌ Tente novamente.\033[0m")
+            sleep(2)
+            limpar_tela()
+            imprimir_cabecalho()
+            variable_options_articles(in_portuguese)
             escolha = input("Opção: ").strip()
         if in_portuguese == True and escolha == "1":
             in_portuguese = False
@@ -553,10 +603,15 @@ def artigos_01_fundamentos_computacionais():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m ")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄\033[0m")
             sleep(2)
             limpar_tela()
             break
+        elif escolha == "3":
+            print("\033[1;33mVoltando para o menu principal...🔄\033[0m")
+            sleep(2)
+            limpar_tela()
+            return 'menu_principal'
 
 
 def artigos_02_fundamentos_computacionais():
@@ -567,17 +622,23 @@ def artigos_02_fundamentos_computacionais():
         else:
             translated = translating_text(artigo_02_fundamentos_computacionais['introduction'])
             introduction = textwrap.fill(translated, width=100)
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                                                ARTIGO: {artigo_02_fundamentos_computacionais['title']}                                          |\033[0m""")
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;33mAutores:\033[0m {artigo_02_fundamentos_computacionais['authors']}
+        def imprimir_cabecalho():
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;36m|                                                ARTIGO: {artigo_02_fundamentos_computacionais['title']}                                          |\033[0m""")
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;33mAutores:\033[0m {artigo_02_fundamentos_computacionais['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
 \033[1;33mLink:\033[0m {artigo_02_fundamentos_computacionais['link']}""")
-        print("\033[1;36m=\033[0m"*110)
+            print("\033[1;36m=\033[0m"*110)
+        imprimir_cabecalho()
         variable_options_articles(in_portuguese)
         escolha = input("Opção: ").strip()
-        while escolha not in ["1", "2"]:
-            print("\033[1;31mOpção inválida.❌​ Tente novamente.​\033[0m")
+        while escolha not in ["1", "2", "3"]:
+            print("\033[1;31mOpção inválida.❌ Tente novamente.\033[0m")
+            sleep(2)
+            limpar_tela()
+            imprimir_cabecalho()
+            variable_options_articles(in_portuguese)
             escolha = input("Opção: ").strip()
         if in_portuguese == True and escolha == "1":
             in_portuguese = False
@@ -588,10 +649,15 @@ def artigos_02_fundamentos_computacionais():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m ")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄\033[0m")
             sleep(2)
             limpar_tela()
             break
+        elif escolha == "3":
+            print("\033[1;33mVoltando para o menu principal...🔄\033[0m")
+            sleep(2)
+            limpar_tela()
+            return 'menu_principal'
 
 
 def artigos_01_elementos_sistemas():
@@ -602,17 +668,23 @@ def artigos_01_elementos_sistemas():
         else:
             translated = translating_text(artigo_01_elementos_sistemas['introduction'])
             introduction = textwrap.fill(translated, width=100)
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                                    ARTIGO: {artigo_01_elementos_sistemas['title']}                               |\033[0m""")
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;33mAutores:\033[0m {artigo_01_elementos_sistemas['authors']}
+        def imprimir_cabecalho():
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;36m|                                    ARTIGO: {artigo_01_elementos_sistemas['title']}                               |\033[0m""")
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;33mAutores:\033[0m {artigo_01_elementos_sistemas['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
 \033[1;33mLink:\033[0m {artigo_01_elementos_sistemas['link']}""")
-        print("\033[1;36m=\033[0m"*110)
+            print("\033[1;36m=\033[0m"*110)
+        imprimir_cabecalho()
         variable_options_articles(in_portuguese)
         escolha = input("Opção: ").strip()
-        while escolha not in ["1", "2"]:
-            print("\033[1;31mOpção inválida.❌​ Tente novamente.​\033[0m")
+        while escolha not in ["1", "2", "3"]:
+            print("\033[1;31mOpção inválida.❌ Tente novamente.\033[0m")
+            sleep(2)
+            limpar_tela()
+            imprimir_cabecalho()
+            variable_options_articles(in_portuguese)
             escolha = input("Opção: ").strip()
         if in_portuguese == True and escolha == "1":
             in_portuguese = False
@@ -623,10 +695,15 @@ def artigos_01_elementos_sistemas():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m ")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄\033[0m")
             sleep(2)
             limpar_tela()
             break
+        elif escolha == "3":
+            print("\033[1;33mVoltando para o menu principal...🔄\033[0m")
+            sleep(2)
+            limpar_tela()
+            return 'menu_principal'
 
 
 def artigos_02_elementos_sistemas():
@@ -637,17 +714,23 @@ def artigos_02_elementos_sistemas():
         else:
             translated = translating_text(artigo_02_elementos_sistemas['introduction'])
             introduction = textwrap.fill(translated, width=100)
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                                ARTIGO: {artigo_02_elementos_sistemas['title']}                              |\033[0m""")
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;33mAutores:\033[0m {artigo_02_elementos_sistemas['authors']}
+        def imprimir_cabecalho():
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;36m|                                ARTIGO: {artigo_02_elementos_sistemas['title']}                              |\033[0m""")
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;33mAutores:\033[0m {artigo_02_elementos_sistemas['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
 \033[1;33mLink:\033[0m {artigo_02_elementos_sistemas['link']}""")
-        print("\033[1;36m=\033[0m"*110)
+            print("\033[1;36m=\033[0m"*110)
+        imprimir_cabecalho()
         variable_options_articles(in_portuguese)
         escolha = input("Opção: ").strip()
-        while escolha not in ["1", "2"]:
-            print("\033[1;31mOpção inválida.❌​ Tente novamente.​\033[0m")
+        while escolha not in ["1", "2", "3"]:
+            print("\033[1;31mOpção inválida.❌ Tente novamente.\033[0m")
+            sleep(2)
+            limpar_tela()
+            imprimir_cabecalho()
+            variable_options_articles(in_portuguese)
             escolha = input("Opção: ").strip()
         if in_portuguese == True and escolha == "1":
             in_portuguese = False
@@ -658,10 +741,15 @@ def artigos_02_elementos_sistemas():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄\033[0m")
             sleep(2)
             limpar_tela()
             break
+        elif escolha == "3":
+            print("\033[1;33mVoltando para o menu principal...🔄\033[0m")
+            sleep(2)
+            limpar_tela()
+            return 'menu_principal'
 
 
 def artigos_01_sistemas_informacao():
@@ -672,17 +760,23 @@ def artigos_01_sistemas_informacao():
         else:
             translated = translating_text(artigo_01_sistemas_informacao['introduction'])
             introduction = textwrap.fill(translated, width=100)
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                                    ARTIGO: {artigo_01_sistemas_informacao['title']}                                  |\033[0m""")
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;33mAutores:\033[0m {artigo_01_sistemas_informacao['authors']}
+        def imprimir_cabecalho():
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;36m|                                    ARTIGO: {artigo_01_sistemas_informacao['title']}                                  |\033[0m""")
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;33mAutores:\033[0m {artigo_01_sistemas_informacao['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
 \033[1;33mLink:\033[0m {artigo_01_sistemas_informacao['link']}""")
-        print("\033[1;36m=\033[0m"*110)
+            print("\033[1;36m=\033[0m"*110)
+        imprimir_cabecalho()
         variable_options_articles(in_portuguese)
         escolha = input("Opção: ").strip()
-        while escolha not in ["1", "2"]:
-            print("\033[1;31mOpção inválida.❌​ Tente novamente.​\033[0m")
+        while escolha not in ["1", "2", "3"]:
+            print("\033[1;31mOpção inválida.❌ Tente novamente.\033[0m")
+            sleep(2)
+            limpar_tela()
+            imprimir_cabecalho()
+            variable_options_articles(in_portuguese)
             escolha = input("Opção: ").strip()
         if in_portuguese == True and escolha == "1":
             in_portuguese = False
@@ -693,10 +787,15 @@ def artigos_01_sistemas_informacao():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄\033[0m")
             sleep(2)
             limpar_tela()
             break
+        elif escolha == "3":
+            print("\033[1;33mVoltando para o menu principal...🔄\033[0m")
+            sleep(2)
+            limpar_tela()
+            return 'menu_principal'
 
 
 def artigos_02_sistemas_informacao():
@@ -707,17 +806,23 @@ def artigos_02_sistemas_informacao():
         else:
             translated = translating_text(artigo_02_sistemas_informacao['introduction'])
             introduction = textwrap.fill(translated, width=100)
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;36m|                                   ARTIGO: {artigo_02_sistemas_informacao['title']}                                |\033[0m""")
-        print("\033[1;36m=\033[0m"*110)
-        print(f"""\033[1;33mAutores:\033[0m {artigo_02_sistemas_informacao['authors']}
+        def imprimir_cabecalho():
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;36m|                                   ARTIGO: {artigo_02_sistemas_informacao['title']}                                |\033[0m""")
+            print("\033[1;36m=\033[0m"*110)
+            print(f"""\033[1;33mAutores:\033[0m {artigo_02_sistemas_informacao['authors']}
 \033[1;33mIntrodução:\033[0m {introduction}
 \033[1;33mLink:\033[0m {artigo_02_sistemas_informacao['link']}""")
-        print("\033[1;36m=\033[0m"*110)
+            print("\033[1;36m=\033[0m"*110)
+        imprimir_cabecalho()
         variable_options_articles(in_portuguese)
         escolha = input("Opção: ").strip()
-        while escolha not in ["1", "2"]:
-            print("\033[1;31mOpção inválida.❌​ Tente novamente.​\033[0m")
+        while escolha not in ["1", "2", "3"]:
+            print("\033[1;31mOpção inválida.❌ Tente novamente.\033[0m")
+            sleep(2)
+            limpar_tela()
+            imprimir_cabecalho()
+            variable_options_articles(in_portuguese)
             escolha = input("Opção: ").strip()
         if in_portuguese == True and escolha == "1":
             in_portuguese = False
@@ -728,7 +833,12 @@ def artigos_02_sistemas_informacao():
             sleep(2)
             limpar_tela()
         elif escolha == "2":
-            print("\033[1;33mVoltando para o menu de cadeiras...🔄​\033[0m")
+            print("\033[1;33mVoltando para o menu de cadeiras...🔄\033[0m")
             sleep(2)
             limpar_tela()
             break
+        elif escolha == "3":
+            print("\033[1;33mVoltando para o menu principal...🔄\033[0m")
+            sleep(2)
+            limpar_tela()
+            return 'menu_principal'

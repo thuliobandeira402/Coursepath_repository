@@ -7,17 +7,22 @@ import sqlite3
 
 def menu_config(cursor, connection, user_id):
     while True:
-        print("\033[1;36m=\033[0m"*50)
-        print("\033[1;36m|            Configurações do Usuário            |\033[0m")
-        print("\033[1;36m=\033[0m"*50)
-        print("""\033[1;34m[1].\033[0m Alterar nome
+        def imprimir_menu():
+            print("\033[1;36m=\033[0m"*50)
+            print("\033[1;36m|            Configurações do Usuário            |\033[0m")
+            print("\033[1;36m=\033[0m"*50)
+            print("""\033[1;34m[1].\033[0m Alterar nome
 \033[1;34m[2].\033[0m Alterar email
 \033[1;34m[3].\033[0m Alterar senha
 \033[1;34m[4].\033[0m Deletar conta
 \033[1;34m[5].\033[0m Voltar ao menu principal""")
+        imprimir_menu()
         escolha = input("Digite o número da opção desejada: ").strip()
         while escolha not in ["1", "2", "3", "4", "5"]:
             print("\033[1;31mOpção inválida. Tente novamente.❌​\033[0m")
+            sleep(2)
+            limpar_tela()
+            imprimir_menu()
             escolha = input("Digite o número da opção desejada: ").strip()
         if escolha == "1":
             while True:

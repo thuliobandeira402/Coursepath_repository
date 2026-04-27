@@ -11,6 +11,19 @@ def translating_text(text):
     translated = translator.translate(text)
     return translated
 
+def imprimir_cabecalho_idiomas():
+    print("\033[1;36m=\033[0m"*50)
+    print("\033[1;36m|            Configurações de Idioma             |\033[0m")
+    print("\033[1;36m=\033[0m"*50)
+
+def menu_idiomas():
+    while True:
+        imprimir_cabecalho_idiomas()
+        change_language()
+        limpar_tela()
+        break
+
+
 
 def change_language():
     global language
@@ -20,7 +33,7 @@ def change_language():
 \033[1;34m[fr]\033[0m para francês  \033[1;34m[de]\033[0m para alemão    \033[1;34m[it]\033[0m para italiano
 \033[1;34m[ru]\033[0m para russo    \033[1;34m[ja]\033[0m para japonês   \033[1;34m[zh]\033[0m para chinês
 
-    Opção:
+Opção:
     """).strip().lower()
         if nova_lingua in idiomas_disponiveis.keys() or nova_lingua in idiomas_disponiveis.values():
             language = nova_lingua
@@ -30,6 +43,8 @@ def change_language():
         else:
             print("\033[1;31mIdioma não suportado.​❌​ Mantendo o idioma atual.​\033[0m")
             sleep(2)
+            limpar_tela()
+            imprimir_cabecalho_idiomas()
 
 
 def traduzir_e_printar():

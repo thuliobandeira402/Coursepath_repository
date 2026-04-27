@@ -7,6 +7,9 @@ from menus.menuprincipal import *
 from others.utils import variable_options_addarticle
 
 
+
+
+
 def menu_adicionar_artigo(cursor, connection, user_id):
     while True:
         print("\033[1;36m=\033[0m"*50)
@@ -24,17 +27,26 @@ def menu_adicionar_artigo(cursor, connection, user_id):
             else:
                 traducao_titulo = translating_text(titulo)
                 traducao = translating_text(abstract)
-            print("\033[1;36m=\033[0m"*50)
-            print("\033[1;36m|                ADICIONAR ARTIGO                |\033[0m")
-            print("\033[1;36m=\033[0m"*50) 
-            print(f"título do artigo adicionado: \033[1;32m{traducao_titulo}\033[0m")
-            print("\n\033[1;33mTradução do abstract:\033[0m")
-            print(f"\033[1;32m{traducao}\033[0m")   
-            print("\033[1;36m=\033[0m"*50)
+            def imprimir_cabecalho():
+                """Criei essa função para reimprimir o cabeçalho do menu, pois quando o usuário digita
+                uma opção inválida, o menu é limpo e reexibido, mas o cabeçalho não é reimpresso, então essa função
+                serve para corrigir isso"""
+                print("\033[1;36m=\033[0m"*50)
+                print("\033[1;36m|                ADICIONAR ARTIGO                |\033[0m")
+                print("\033[1;36m=\033[0m"*50) 
+                print(f"título do artigo adicionado: \033[1;32m{traducao_titulo}\033[0m")
+                print("\n\033[1;33mTradução do abstract:\033[0m")
+                print(f"\033[1;32m{traducao}\033[0m")   
+                print("\033[1;36m=\033[0m"*50)
+            imprimir_cabecalho()
             variable_options_addarticle(in_portuguese)
             escolha = input("Digite o número da opção desejada: ").strip()
             while escolha not in ["1", "2", "3"]:
                 print("\033[1;31mOpção inválida. Tente novamente.❌​\033[0m")
+                sleep(2)
+                limpar_tela()
+                imprimir_cabecalho()
+                variable_options_addarticle(in_portuguese)
                 escolha = input("Digite o número da opção desejada: ").strip()
             if escolha == "1":
                 change_language()
@@ -54,6 +66,6 @@ def menu_adicionar_artigo(cursor, connection, user_id):
                 sleep(2)
                 limpar_tela()
                 return 
-                
-
+            
+           
        
