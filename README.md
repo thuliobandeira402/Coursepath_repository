@@ -1,4 +1,5 @@
-[README.md](https://github.com/user-attachments/files/27137292/README.md)
+[README.md](https://github.com/user-attachments/files/27173340/README.md)
+
 # 👾 CoursePath 🤖
 
 **CoursePath** é uma aplicação de terminal desenvolvida em Python com o objetivo de facilitar o acesso de estudantes da UFRPE a materiais de estudo. A plataforma oferece conteúdos organizados por curso, semestre e disciplina, com suporte integrado à tradução automática de textos e artigos científicos para múltiplos idiomas.
@@ -34,7 +35,8 @@
 ### 📚 Conteúdo por Curso e Disciplina
 - Acesso ao curso de **BSI – Bacharelado em Sistemas de Informação**
 - Navegação por **semestres** (1º e 2º períodos) e suas respectivas **disciplinas/cadeiras**
-- Cada disciplina exibe uma **descrição introdutória** e dá acesso a **artigos científicos** relacionados
+- Cada disciplina exibe uma **descrição introdutória** e dá acesso a **2 artigos científicos** relacionados
+- Menus com reexibição automática do cabeçalho em caso de opção inválida (via função `imprimir_cabecalho()`)
 - Disciplinas disponíveis:
   - **1º Semestre:** Projeto Interdisciplinar, Fundamentos Matemáticos, Princípios de Programação, Sustentabilidade e Sistemas de Informação, Introdução a Sistemas de Administração
   - **2º Semestre:** Projeto Interdisciplinar 02, Fundamentos Matemáticos 02, Fundamentos de Problemas Computacionais, Elementos de Sistemas Computacionais, Fundamentos de Sistemas de Informação
@@ -42,8 +44,8 @@
 ### 🌍 Tradução Integrada
 - Tradução automática dos conteúdos e artigos via **Google Translator**
 - Suporte a múltiplos idiomas: inglês, português, espanhol, francês, alemão, italiano, russo, japonês, chinês e mais
-- Alternância dinâmica entre o idioma traduzido e o **português original** em qualquer tela de conteúdo
-- **Adição de artigos personalizados:** o usuário pode colar qualquer abstract ou texto e receber a tradução instantânea
+- Alternância dinâmica entre o idioma traduzido e o **português original** em qualquer tela de conteúdo — inclusive nas telas de cada disciplina individualmente
+- **Adição de artigos personalizados:** o usuário pode colar qualquer abstract ou texto, escolher o idioma de destino e receber a tradução instantânea com reexibição do cabeçalho em caso de opção inválida
 
 ---
 
@@ -57,15 +59,17 @@ CoursePath/
 ├── menus/                         # Módulos de navegação por menus
 │   ├── menuinicial.py             # Tela inicial (cadastro / login / sair)
 │   ├── menuprincipal.py           # Menu principal do usuário logado
-│   ├── cursos.py                  # Menu de cursos disponíveis
-│   ├── menubsi.py                 # Apresentação do curso de BSI
-│   ├── semestre.py                # Seleção de semestre
-│   ├── menucadeiras.py            # Menus de cada disciplina com artigos
-│   └── adicionartigos.py          # Fluxo para adicionar e traduzir artigos
+│   ├── cursos.py                  # Menu de cursos disponíveis (com imprimir_cabecalho)
+│   ├── menubsi.py                 # Apresentação do curso de BSI (com imprimir_cabecalho)
+│   ├── semestre.py                # Seleção de semestre (com imprimir_cabecalho)
+│   ├── menucadeiras.py            # Menus individuais de cada disciplina com textos introdutórios,
+│   │                              # artigos e controle de tradução (com imprimir_cabecalho)
+│   └── adicionartigos.py          # Fluxo para adicionar e traduzir artigos personalizados
+│                                  # (com imprimir_cabecalho)
 │
-├── cadeiras/                      # Listagem de cadeiras por período
-│   ├── cadeirasperiodo1.py        # Cadeiras do 1º semestre
-│   └── cadeirasperiodo2.py        # Cadeiras do 2º semestre
+├── cadeiras/                      # Listagem e navegação de cadeiras por período
+│   ├── cadeirasperiodo1.py        # Menu de cadeiras do 1º semestre (com imprimir_cabecalho)
+│   └── cadeirasperiodo2.py        # Menu de cadeiras do 2º semestre (com imprimir_cabecalho)
 │
 ├── articles/                      # Artigos científicos por disciplina
 │   ├── artigos_periodo1.py        # Artigos do 1º período
@@ -83,7 +87,7 @@ CoursePath/
 │   └── database.py                # Funções CRUD com SQLite
 │
 ├── others/                        # Utilitários e tradutor
-│   ├── utils.py                   # Funções auxiliares e opções de menu
+│   ├── utils.py                   # Funções auxiliares e opções de menu variáveis por idioma
 │   └── tradutor.py                # Integração com Google Translator
 │
 └── verifications/                 # Validações de entrada
@@ -222,8 +226,8 @@ Operações implementadas (CRUD completo):
 
 ---
 
-## 👨‍💻 Autores
+## 👨‍💻 Autor
 
-Desenvolvido por **Thulio Bandeira e Rivan Barroso**  
+Desenvolvido por **Thulio Bandeira**  
 Curso: Bacharelado em Sistemas de Informação — UFRPE  
 Repositório: [github.com/thuliobandeira402/Coursepath_repository](https://github.com/thuliobandeira402/Coursepath_repository)
