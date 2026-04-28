@@ -23,12 +23,12 @@ def main():
             limpar_tela()
             sleep(2)
             fazer_cadastro(cursor, connection)
-        elif escolha == "2":
+        elif escolha == "2": #login do usuário 
             print("\033[1;33mProsseguindo para o login...🔄​\033[0m")
             sleep(2)
             limpar_tela()
             login(cursor, connection)
-        elif escolha == "3":
+        elif escolha == "3": #sair do programa
             print("\033[1;33mSaindo do programa. Até logo!🔄​\033[0m")
             sleep(2)
             limpar_tela()

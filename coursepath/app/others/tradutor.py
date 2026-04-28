@@ -44,7 +44,8 @@ Opção:
             print("\033[1;31mIdioma não suportado.​❌​ Mantendo o idioma atual.​\033[0m")
             sleep(2)
             limpar_tela()
-            imprimir_cabecalho_idiomas()
+            break
+            
 
 
 def traduzir_e_printar():

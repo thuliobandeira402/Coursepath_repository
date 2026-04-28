@@ -10,15 +10,20 @@ def atualizar_dados(email_atual):
     usuario = buscar_usuario_por_email(email_atual)
     nome = usuario[0]     
     email = usuario[1]     
-
-    print("""Digite qual dado você deseja alterar:
+    def imprimir_cabecalho():
+        print("""\033[1;34mDigite qual dado você deseja alterar:
 [1]. Nome
 [2]. Email
-[3]. Voltar para o menu principal""")
+[3]. Voltar""")
+    imprimir_cabecalho()
     escolha = input("Opção: ").strip()
     while escolha not in ["1", "2", "3"]:
         print("\033[1;31mOpção inválida.❌​ Tente novamente.\033[0m")
+        sleep(2)
+        limpar_tela()
+        imprimir_cabecalho()
         escolha = input("Opção: ").strip()
+    
 
     if escolha == "3":
         print("\033[1;33mVoltando para o menu principal.🔄​\033[0m")

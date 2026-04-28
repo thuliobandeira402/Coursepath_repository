@@ -50,7 +50,6 @@ def menu_adicionar_artigo(cursor, connection, user_id):
                 escolha = input("Digite o número da opção desejada: ").strip()
             if escolha == "1":
                 change_language()
-                print("\033[1;33mIdioma alterado.🔄​\033[0m")
                 sleep(2)
                 limpar_tela()
             elif in_portuguese and escolha == "2":
