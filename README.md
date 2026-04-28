@@ -228,6 +228,6 @@ Operações implementadas (CRUD completo):
 
 ## 👨‍💻 Autor
 
-Desenvolvido por **Thulio Bandeira**  
+Desenvolvido por **Thulio Bandeira e Rivan Barroso**  
 Curso: Bacharelado em Sistemas de Informação — UFRPE  
 Repositório: [github.com/thuliobandeira402/Coursepath_repository](https://github.com/thuliobandeira402/Coursepath_repository)
