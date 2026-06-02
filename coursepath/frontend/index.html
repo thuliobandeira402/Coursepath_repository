@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoursePath — Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <!-- ░░ BACKGROUND ORBS ░░ -->
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+  <div class="bg-orb orb3"></div>
+
+  <!-- ░░ AUTH WRAPPER ░░ -->
+  <main class="auth-wrap">
+
+    <!-- Brand -->
+    <div class="brand" id="brand">
+      <span class="brand-icon">◈</span>
+      <span class="brand-name">CoursePath</span>
+    </div>
+
+    <!-- Card -->
+    <div class="card" id="auth-card">
+
+      <!-- LOGIN -->
+      <section class="auth-section active" id="sec-login">
+        <h2>Bem-vindo de volta</h2>
+        <p class="sub">Acesse sua trilha de aprendizado</p>
+
+        <div class="field">
+          <label>E-mail institucional</label>
+          <input type="email" id="login-email" placeholder="nome.sobrenome@ufrpe.br" autocomplete="email" />
+          <span class="field-err" id="err-login-email"></span>
+        </div>
+        <div class="field">
+          <label>Senha</label>
+          <input type="password" id="login-senha" placeholder="••••••••" autocomplete="current-password" />
+          <span class="field-err" id="err-login-senha"></span>
+        </div>
+
+        <button class="btn-primary" id="btn-login">Entrar</button>
+        <span class="field-err center" id="err-login-global" style="font-size:13px;margin-top:4px;"></span>
+
+        <div class="auth-links">
+          <span>Não tem conta?</span>
+          <button class="link-btn" onclick="irParaCadastro()">Criar conta</button>
+        </div>
+      </section>
+
+      <!-- CADASTRO -->
+      <section class="auth-section" id="sec-cadastro">
+        <h2>Criar conta</h2>
+        <p class="sub">Junte-se à trilha acadêmica</p>
+
+        <div class="field">
+          <label>Nome completo</label>
+          <input type="text" id="cad-nome" placeholder="João Silva" autocomplete="name" />
+          <span class="field-err" id="err-cad-nome"></span>
+        </div>
+        <div class="field">
+          <label>E-mail institucional</label>
+          <input type="email" id="cad-email" placeholder="nome.sobrenome@ufrpe.br" autocomplete="email" />
+          <span class="field-err" id="err-cad-email"></span>
+        </div>
+        <div class="field">
+          <label>Senha</label>
+          <input type="password" id="cad-senha" placeholder="Mínimo 8 caracteres" autocomplete="new-password" />
+          <span class="field-err" id="err-cad-senha"></span>
+        </div>
+        <div class="field">
+          <label>Confirmar senha</label>
+          <input type="password" id="cad-confirma" placeholder="Repita a senha" autocomplete="new-password" />
+          <span class="field-err" id="err-cad-confirma"></span>
+        </div>
+
+        <button class="btn-primary" id="btn-cadastro">Criar conta</button>
+        <span class="field-err center" id="err-cad-global" style="font-size:13px;margin-top:4px;"></span>
+
+        <div class="auth-links">
+          <span>Já tem conta?</span>
+          <button class="link-btn" onclick="irParaLogin()">Fazer login</button>
+        </div>
+      </section>
+
+    </div><!-- /card -->
+
+    <p class="footer-txt">UFRPE · Sistema de Informação · 2025</p>
+
+  </main>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>

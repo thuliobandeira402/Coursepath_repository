@@ -1,0 +1,345 @@
+/* ═══════════════════════════════════════════════════
+   CoursePath — style.css  (auth + globals)
+   Tema: dark editorial, fonte Syne + DM Sans
+═══════════════════════════════════════════════════ */
+
+/* ── Reset & tokens ────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #080c14;
+  --surface:   #0e1520;
+  --surface2:  #141d2e;
+  --border:    rgba(255,255,255,0.08);
+  --border2:   rgba(255,255,255,0.13);
+
+  --accent:    #3b82f6;
+  --accent2:   #60a5fa;
+  --accent-glow: rgba(59,130,246,0.22);
+
+  --teal:      #0ea5e9;
+  --teal-dim:  rgba(14,165,233,0.15);
+
+  --text:      #f0f4ff;
+  --text2:     #8b98b4;
+  --text3:     #556077;
+
+  --err:       #f87171;
+  --ok:        #4ade80;
+  --warn:      #fbbf24;
+
+  --radius:    14px;
+  --radius-sm: 8px;
+
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  --shadow-card: 0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px var(--border);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ── Background orbs ───────────────────────────── */
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  opacity: .35;
+  z-index: 0;
+}
+.orb1 {
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, #1e3a8a 0%, transparent 70%);
+  top: -140px; left: -140px;
+}
+.orb2 {
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, #0e7490 0%, transparent 70%);
+  bottom: -100px; right: -80px;
+}
+.orb3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, #7c3aed 0%, transparent 70%);
+  top: 50%; left: 55%;
+  transform: translate(-50%, -50%);
+  opacity: .18;
+}
+
+/* ── Auth layout ───────────────────────────────── */
+.auth-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 32px 16px 48px;
+  gap: 24px;
+}
+
+/* ── Brand ─────────────────────────────────────── */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fadeDown .5s ease both;
+}
+.brand-icon {
+  font-size: 28px;
+  color: var(--accent2);
+  text-shadow: 0 0 20px var(--accent-glow);
+}
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: -.5px;
+  background: linear-gradient(135deg, #f0f4ff 0%, #93c5fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Card ──────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  padding: 36px 32px;
+  box-shadow: var(--shadow-card);
+  animation: fadeUp .5s .1s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Linha decorativa topo */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent2), transparent);
+}
+
+/* ── Auth sections (toggle) ────────────────────── */
+.auth-section { display: none; flex-direction: column; gap: 0; }
+.auth-section.active { display: flex; }
+
+.auth-section h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.sub {
+  font-size: 13px;
+  color: var(--text2);
+  margin-bottom: 24px;
+}
+
+/* ── Fields ────────────────────────────────────── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+.field label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text2);
+  letter-spacing: .3px;
+}
+.field input {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.field input::placeholder { color: var(--text3); }
+.field input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.field input.invalid { border-color: var(--err); }
+
+.field-err {
+  font-size: 11.5px;
+  color: var(--err);
+  min-height: 15px;
+  display: block;
+}
+.field-err.center { text-align: center; }
+
+/* ── Buttons ───────────────────────────────────── */
+.btn-primary {
+  width: 100%;
+  padding: 11px;
+  background: linear-gradient(135deg, #1d4ed8, #0ea5e9);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: .3px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: opacity .2s, transform .15s;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary:hover { opacity: .9; transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+.btn-primary:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+.btn-primary-sm {
+  padding: 7px 16px;
+  background: linear-gradient(135deg, #1d4ed8, #0ea5e9);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: opacity .2s, transform .15s;
+}
+.btn-primary-sm:hover { opacity: .85; transform: translateY(-1px); }
+.btn-primary-sm:disabled { opacity: .5; cursor: not-allowed; }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  background: transparent;
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-sm);
+  color: var(--text2);
+  font-family: var(--font-body);
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--text);
+  background: var(--accent-glow);
+}
+.btn-outline.active-read {
+  border-color: var(--ok);
+  color: var(--ok);
+}
+.btn-outline.active-fav {
+  border-color: var(--warn);
+  color: var(--warn);
+}
+
+/* ── Auth links ────────────────────────────────── */
+.auth-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--text3);
+}
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--accent2);
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.link-btn:hover { color: var(--text); }
+
+.footer-txt {
+  font-size: 11px;
+  color: var(--text3);
+  letter-spacing: .5px;
+  animation: fadeUp .5s .25s ease both;
+}
+
+/* ── Spinner ────────────────────────────────────── */
+.spinner {
+  width: 36px; height: 36px;
+  border: 3px solid var(--border2);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  margin: 0 auto 12px;
+}
+
+/* ── Animations ─────────────────────────────────── */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
+
+/* ── Toast notification ─────────────────────────── */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 50px;
+  padding: 10px 22px;
+  font-size: 13px;
+  color: var(--text);
+  z-index: 9999;
+  transition: transform .3s ease, opacity .3s ease;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+.toast.ok  { border-color: var(--ok);  color: var(--ok); }
+.toast.err { border-color: var(--err); color: var(--err); }

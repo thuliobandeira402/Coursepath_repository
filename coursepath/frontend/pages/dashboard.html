@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoursePath — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/dashboard.css" />
+</head>
+<body class="app-body">
+
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+
+  <!-- ░░ SIDEBAR ░░ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon">◈</span>
+      <span class="brand-name">CoursePath</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-item active" data-view="todos" onclick="setView('todos')">
+        <span class="nav-icon">⬡</span> Todos os Artigos
+      </button>
+      <button class="nav-item" data-view="semestre1" onclick="setView('semestre1')">
+        <span class="nav-icon">①</span> 1º Semestre
+      </button>
+      <button class="nav-item" data-view="semestre2" onclick="setView('semestre2')">
+        <span class="nav-icon">②</span> 2º Semestre
+      </button>
+      <button class="nav-item" data-view="lidos" onclick="setView('lidos')">
+        <span class="nav-icon">✓</span> Já Lidos
+      </button>
+      <button class="nav-item" data-view="favoritos" onclick="setView('favoritos')">
+        <span class="nav-icon">♡</span> Favoritos
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-chip" id="user-chip">
+        <div class="user-avatar" id="user-avatar">?</div>
+        <div class="user-info">
+          <span class="user-name" id="user-name">Carregando...</span>
+          <span class="user-role">Estudante</span>
+        </div>
+      </div>
+      <button class="logout-btn" onclick="logout()" title="Sair">⏻</button>
+    </div>
+  </aside>
+
+  <!-- ░░ MAIN ░░ -->
+  <div class="main-wrap">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="hamburger" id="hamburger" onclick="toggleSidebar()">☰</button>
+      <div class="topbar-title" id="topbar-title">Todos os Artigos</div>
+      <div class="topbar-stats" id="topbar-stats"></div>
+    </header>
+
+    <!-- Content -->
+    <main class="content" id="content">
+
+      <!-- Filter bar -->
+      <div class="filter-bar" id="filter-bar">
+        <input class="search-input" id="search-input" type="text" placeholder="Buscar artigos, autores, disciplinas…" oninput="filtrarArtigos()" />
+        <div class="filter-tags" id="filter-tags"></div>
+      </div>
+
+      <!-- Grid de artigos -->
+      <div class="articles-grid" id="articles-grid">
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <p>Carregando artigos…</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ░░ MODAL DE ARTIGO ░░ -->
+  <div class="modal-overlay" id="modal-overlay" onclick="fecharModal(event)">
+    <div class="modal" id="modal">
+      <button class="modal-close" onclick="fecharModal()">✕</button>
+
+      <div class="modal-header">
+        <div class="modal-badges">
+          <span class="badge badge-semester" id="m-semester"></span>
+          <span class="badge badge-subject" id="m-subject"></span>
+        </div>
+        <h2 class="modal-title" id="m-title"></h2>
+        <p class="modal-authors" id="m-authors"></p>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-intro" id="m-intro"></div>
+
+        <!-- Ações -->
+        <div class="modal-actions">
+          <a class="btn-outline" id="m-link" href="#" target="_blank" rel="noopener">
+            🔗 Abrir PDF / Artigo
+          </a>
+          <button class="btn-outline" id="btn-mark-read" onclick="marcarLido()">
+            ✓ Marcar como lido
+          </button>
+          <button class="btn-outline" id="btn-fav" onclick="toggleFavorito()">
+            ♡ Favoritar
+          </button>
+        </div>
+
+        <!-- Seção de Resumo -->
+        <div class="modal-section" id="section-resumo">
+          <div class="section-header">
+            <h3>✦ Resumo com IA</h3>
+            <button class="btn-primary-sm" id="btn-resumo" onclick="gerarResumo()">
+              Gerar Resumo
+            </button>
+          </div>
+          <div class="resumo-body" id="resumo-body"></div>
+        </div>
+
+        <!-- Seção de Quiz -->
+        <div class="modal-section" id="section-quiz" style="display:none">
+          <div class="section-header">
+            <h3>◎ Quiz do Artigo</h3>
+            <button class="btn-primary-sm" id="btn-quiz" onclick="iniciarQuiz()">
+              Iniciar Quiz
+            </button>
+          </div>
+          <div class="quiz-body" id="quiz-body"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/api.js"></script>
+  <script src="../../js/dashboard.js"></script>
+</body>
+</html>
