@@ -117,8 +117,36 @@ class UserRepository:
         row = self.db.fetchone("SELECT id, name, email FROM users WHERE email = ?", (email,))
         return dict(row) if row else None
 
+    def get_by_id(self, user_id: int):
+        row = self.db.fetchone("SELECT id, name, email FROM users WHERE id = ?", (user_id,))
+        return dict(row) if row else None
+
     def email_exists(self, email: str) -> bool:
         return self.db.fetchone("SELECT id FROM users WHERE email = ?", (email,)) is not None
+
+    def update(self, user_id: int, name: str = None, email: str = None, password: str = None):
+        """Atualiza campos do usuário. Só altera os campos fornecidos."""
+        if name is not None:
+            self.db.execute("UPDATE users SET name = ? WHERE id = ?", (name, user_id))
+        if email is not None:
+            self.db.execute("UPDATE users SET email = ? WHERE id = ?", (email, user_id))
+        if password is not None:
+            self.db.execute("UPDATE users SET password = ? WHERE id = ?", (self._hash(password), user_id))
+        return True
+
+    def delete(self, user_id: int):
+        """Remove o usuário e todos os seus dados associados."""
+        self.db.execute("DELETE FROM read_articles WHERE user_id = ?", (user_id,))
+        self.db.execute("DELETE FROM favorite_articles WHERE user_id = ?", (user_id,))
+        self.db.execute("DELETE FROM users WHERE id = ?", (user_id,))
+        return True
+
+    def verify_password(self, user_id: int, password: str) -> bool:
+        row = self.db.fetchone(
+            "SELECT id FROM users WHERE id = ? AND password = ?",
+            (user_id, self._hash(password))
+        )
+        return row is not None
 
 
 class ArticleRepository:

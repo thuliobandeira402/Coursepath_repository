@@ -39,6 +39,13 @@ const Api = {
   getSummary: (id) => Api._req('GET', `/articles/${id}/summary`),
   generateQuiz: (id, summary = '') =>
     Api._req('POST', `/articles/${id}/quiz`, { summary }),
+  translateIntroduction: (id, lang = 'pt') =>
+    Api._req('GET', `/articles/${id}/translate?lang=${lang}`),
+
+  // User CRUD
+  getUser: () => Api._req('GET', '/user'),
+  updateUser: (fields) => Api._req('PUT', '/user', fields),
+  deleteUser: (password) => Api._req('DELETE', '/user', { password }),
 };
 
 function showToast(msg, type = '') {

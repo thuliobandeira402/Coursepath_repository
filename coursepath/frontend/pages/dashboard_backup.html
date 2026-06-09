@@ -37,9 +37,6 @@
       <button class="nav-item" data-view="favoritos" onclick="setView('favoritos')">
         <span class="nav-icon">♡</span> Favoritos
       </button>
-      <button class="nav-item" data-view="adicionar" onclick="abrirModalAdicionar()">
-        <span class="nav-icon">＋</span> Adicionar Artigo
-      </button>
     </nav>
 
     <div class="sidebar-footer">
@@ -207,14 +204,9 @@
         <div class="modal-section" id="section-resumo">
           <div class="section-header">
             <h3>✦ Resumo com IA</h3>
-            <div style="display:flex;gap:8px;align-items:center;">
-              <button class="btn-outline" id="btn-copiar-resumo" onclick="copiarResumo()" style="display:none;font-size:12px;padding:5px 12px;">
-                📋 Copiar
-              </button>
-              <button class="btn-primary-sm" id="btn-resumo" onclick="gerarResumo()">
-                Gerar Resumo
-              </button>
-            </div>
+            <button class="btn-primary-sm" id="btn-resumo" onclick="gerarResumo()">
+              Gerar Resumo
+            </button>
           </div>
           <div class="resumo-body" id="resumo-body"></div>
         </div>
@@ -230,81 +222,6 @@
           <div class="quiz-body" id="quiz-body"></div>
         </div>
 
-      </div>
-    </div>
-  </div>
-
-  <!-- ░░ MODAL ADICIONAR ARTIGO ░░ -->
-  <div class="modal-overlay" id="add-article-overlay" onclick="fecharModalAdicionar(event)" style="display:none">
-    <div class="modal" id="add-article-modal" style="max-width:560px;">
-      <button class="modal-close" onclick="fecharModalAdicionar()">✕</button>
-
-      <div class="modal-header">
-        <div class="modal-badges">
-          <span class="badge badge-semester">Novo Artigo</span>
-        </div>
-        <h2 class="modal-title">Adicionar Artigo</h2>
-        <p class="modal-authors" style="font-size:13px;color:var(--text3,#6c7086);">Cadastre um artigo acadêmico no CoursePath</p>
-      </div>
-
-      <div class="modal-body">
-        <div style="display:flex;flex-direction:column;gap:14px;">
-
-          <div class="field-group">
-            <label class="field-label">Título *</label>
-            <input type="text" id="add-title" class="field-input" placeholder="Título completo do artigo" />
-            <span class="field-err" id="err-add-title"></span>
-          </div>
-
-          <div class="field-group">
-            <label class="field-label">Autores *</label>
-            <input type="text" id="add-authors" class="field-input" placeholder="Ex: Silva, J.; Souza, M." />
-            <span class="field-err" id="err-add-authors"></span>
-          </div>
-
-          <div style="display:flex;gap:12px;">
-            <div class="field-group" style="flex:1;">
-              <label class="field-label">Disciplina *</label>
-              <input type="text" id="add-subject" class="field-input" placeholder="Ex: Algoritmos" />
-              <span class="field-err" id="err-add-subject"></span>
-            </div>
-            <div class="field-group" style="width:120px;">
-              <label class="field-label">Semestre *</label>
-              <select id="add-semester" class="field-input" style="cursor:pointer;">
-                <option value="">—</option>
-                <option value="1">1º Semestre</option>
-                <option value="2">2º Semestre</option>
-              </select>
-              <span class="field-err" id="err-add-semester"></span>
-            </div>
-          </div>
-
-          <div class="field-group">
-            <label class="field-label">Introdução / Resumo *</label>
-            <textarea id="add-introduction" class="field-input" rows="4"
-              placeholder="Cole aqui o resumo ou introdução do artigo…"
-              style="resize:vertical;min-height:90px;font-family:inherit;"></textarea>
-            <span class="field-err" id="err-add-intro"></span>
-          </div>
-
-          <div class="field-group">
-            <label class="field-label">Link do PDF / Artigo *</label>
-            <input type="url" id="add-link" class="field-input" placeholder="https://..." />
-            <span class="field-err" id="err-add-link"></span>
-          </div>
-
-          <span class="field-err" id="err-add-global" style="font-size:13px;display:block;"></span>
-
-          <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <button class="btn-outline" onclick="fecharModalAdicionar()" style="flex:1;min-width:100px;">
-              Cancelar
-            </button>
-            <button class="btn-primary" id="btn-add-submit" onclick="submeterNovoArtigo()" style="flex:2;min-width:140px;">
-              ＋ Adicionar Artigo
-            </button>
-          </div>
-
-        </div>
       </div>
     </div>
   </div>

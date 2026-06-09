@@ -293,8 +293,6 @@ async function abrirModal(id) {
   document.getElementById('btn-quiz').textContent = 'Iniciar Quiz';
   document.getElementById('btn-resumo').disabled = false;
   document.getElementById('btn-resumo').textContent = 'Gerar Resumo';
-  const btnCopiar = document.getElementById('btn-copiar-resumo');
-  if (btnCopiar) btnCopiar.style.display = 'none';
 
   // Busca artigo
   const { ok, data } = await Api.getArticle(id);
@@ -436,10 +434,6 @@ async function gerarResumo() {
     btn.textContent = '↺ Gerar novamente';
     btn.disabled = false;
 
-    // Mostra botão de copiar
-    const btnCopiar = document.getElementById('btn-copiar-resumo');
-    if (btnCopiar) btnCopiar.style.display = 'inline-flex';
-
     // Libera quiz se já lido
     if (state.currentArticle.is_read) {
       document.getElementById('section-quiz').style.display = 'block';
@@ -455,47 +449,22 @@ async function gerarResumo() {
 
 // Renderizador de markdown simples (sem dependências)
 function renderMarkdown(text) {
-  // Escapa HTML para evitar XSS
-  const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  
-  const lines = text.split('\n');
-  const out = [];
-  let inUl = false;
-
-  for (let line of lines) {
-    // Separador horizontal (--- ou ***) — ignora, não renderiza nada
-    if (/^[-*]{3,}\s*$/.test(line.trim())) {
-      if (inUl) { out.push('</ul>'); inUl = false; }
-      // apenas pula, sem adicionar nada
-      continue;
+  return text
+    // Bold
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     // Headers
-    } else if (/^### /.test(line)) {
-      if (inUl) { out.push('</ul>'); inUl = false; }
-      out.push(`<h3>${esc(line.slice(4))}</h3>`);
-    } else if (/^## /.test(line)) {
-      if (inUl) { out.push('</ul>'); inUl = false; }
-      out.push(`<h3>${esc(line.slice(3))}</h3>`);
-    } else if (/^# /.test(line)) {
-      if (inUl) { out.push('</ul>'); inUl = false; }
-      out.push(`<h3>${esc(line.slice(2))}</h3>`);
-    // Listas (só entra aqui se NÃO for separador)
-    } else if (/^\s*[-*] /.test(line)) {
-      if (!inUl) { out.push('<ul>'); inUl = true; }
-      const content = line.replace(/^\s*[-*] /, '');
-      out.push(`<li>${esc(content).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</li>`);
-    // Linha vazia
-    } else if (line.trim() === '') {
-      if (inUl) { out.push('</ul>'); inUl = false; }
-      out.push('<br>');
-    // Parágrafo normal
-    } else {
-      if (inUl) { out.push('</ul>'); inUl = false; }
-      const formatted = esc(line).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-      out.push(`<p>${formatted}</p>`);
-    }
-  }
-  if (inUl) out.push('</ul>');
-  return out.join('\n');
+    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+    .replace(/^# (.*$)/gim, '<h2>$1</h2>')
+    // Listas
+    .replace(/^\s*[-*] (.*$)/gim, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+    // Parágrafos (linhas duplas)
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/^(?!<[hul])/gm, '')
+    // Wrap inicial
+    .replace(/^(.+)/, '<p>$1')
+    + '</p>';
 }
 
 // ══════════════════════════════════════════════════
@@ -630,133 +599,3 @@ async function traduzirIntroducao() {
     corpo.innerHTML = '<p style="color:#f38ba8;">⚠️ Erro de conexão.</p>';
   }
 }
-
-// ══════════════════════════════════════════════════
-// COPIAR RESUMO
-// ══════════════════════════════════════════════════
-async function copiarResumo() {
-  if (!state.currentSummary) return;
-
-  const btn = document.getElementById('btn-copiar-resumo');
-  try {
-    await navigator.clipboard.writeText(state.currentSummary);
-    btn.textContent = '✓ Copiado!';
-    setTimeout(() => { btn.textContent = '📋 Copiar'; }, 2000);
-    showToast('Resumo copiado para a área de transferência ✓', 'ok');
-  } catch {
-    // Fallback para navegadores mais antigos
-    const ta = document.createElement('textarea');
-    ta.value = state.currentSummary;
-    ta.style.position = 'fixed';
-    ta.style.opacity = '0';
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    btn.textContent = '✓ Copiado!';
-    setTimeout(() => { btn.textContent = '📋 Copiar'; }, 2000);
-    showToast('Resumo copiado! ✓', 'ok');
-  }
-}
-
-// ══════════════════════════════════════════════════
-// MODAL — ADICIONAR ARTIGO
-// ══════════════════════════════════════════════════
-
-function abrirModalAdicionar() {
-  // Limpa campos
-  ['add-title','add-authors','add-subject','add-link','add-introduction'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.value = '';
-  });
-  document.getElementById('add-semester').value = '';
-  ['err-add-title','err-add-authors','err-add-subject','err-add-semester',
-   'err-add-intro','err-add-link','err-add-global'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = '';
-  });
-  const btn = document.getElementById('btn-add-submit');
-  if (btn) { btn.disabled = false; btn.textContent = '＋ Adicionar Artigo'; }
-
-  // Fecha sidebar mobile
-  document.getElementById('sidebar').classList.remove('open');
-
-  const overlay = document.getElementById('add-article-overlay');
-  overlay.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-
-function fecharModalAdicionar(event) {
-  if (event && event.target !== document.getElementById('add-article-overlay')) return;
-  document.getElementById('add-article-overlay').style.display = 'none';
-  document.body.style.overflow = '';
-}
-
-async function submeterNovoArtigo() {
-  // Limpa erros
-  ['err-add-title','err-add-authors','err-add-subject','err-add-semester',
-   'err-add-intro','err-add-link','err-add-global'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = '';
-  });
-
-  const title        = document.getElementById('add-title').value.trim();
-  const authors      = document.getElementById('add-authors').value.trim();
-  const subject      = document.getElementById('add-subject').value.trim();
-  const semesterVal  = document.getElementById('add-semester').value;
-  const introduction = document.getElementById('add-introduction').value.trim();
-  const link         = document.getElementById('add-link').value.trim();
-
-  let valid = true;
-  if (!title) { document.getElementById('err-add-title').textContent = 'Título obrigatório.'; valid = false; }
-  if (!authors) { document.getElementById('err-add-authors').textContent = 'Autores obrigatórios.'; valid = false; }
-  if (!subject) { document.getElementById('err-add-subject').textContent = 'Disciplina obrigatória.'; valid = false; }
-  if (!semesterVal) { document.getElementById('err-add-semester').textContent = 'Selecione o semestre.'; valid = false; }
-  if (!introduction) { document.getElementById('err-add-intro').textContent = 'Introdução obrigatória.'; valid = false; }
-  if (!link) { document.getElementById('err-add-link').textContent = 'Link obrigatório.'; valid = false; }
-  if (!valid) return;
-
-  const btn = document.getElementById('btn-add-submit');
-  btn.disabled = true;
-  btn.textContent = 'Salvando…';
-
-  try {
-    const res = await fetch('http://localhost:5000/api/articles', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-User-Id': state.user?.id || ''
-      },
-      body: JSON.stringify({
-        title, authors, subject,
-        semester: parseInt(semesterVal),
-        introduction, link
-      })
-    });
-    const data = await res.json();
-
-    if (!res.ok) {
-      document.getElementById('err-add-global').textContent = data.error || 'Erro ao salvar artigo.';
-      btn.disabled = false;
-      btn.textContent = '＋ Adicionar Artigo';
-      return;
-    }
-
-    showToast('Artigo adicionado com sucesso! ✓', 'ok');
-    fecharModalAdicionar();
-    // Recarrega lista
-    await carregarArtigos();
-  } catch (e) {
-    document.getElementById('err-add-global').textContent = 'Erro de conexão com o servidor.';
-    btn.disabled = false;
-    btn.textContent = '＋ Adicionar Artigo';
-  }
-}
-
-// Fecha modal adicionar com Escape
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    const overlay = document.getElementById('add-article-overlay');
-    if (overlay && overlay.style.display === 'flex') fecharModalAdicionar();
-  }
-});

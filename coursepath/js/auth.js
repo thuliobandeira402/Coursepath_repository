@@ -3,6 +3,28 @@
    Lógica de login e cadastro.
 ═══════════════════════════════════════════════════ */
 
+// ── Captcha Matemático ─────────────────────────────
+let _captchaAnswer = 0;
+
+function gerarCaptcha() {
+  const a = Math.floor(Math.random() * 10) + 1;
+  const b = Math.floor(Math.random() * 10) + 1;
+  const ops = [
+    { label: `${a} + ${b}`, result: a + b },
+    { label: `${a + b} - ${b}`, result: a },
+    { label: `${a} × ${b}`, result: a * b },
+  ];
+  const op = ops[Math.floor(Math.random() * ops.length)];
+  _captchaAnswer = op.result;
+  const label = document.getElementById('captcha-label');
+  const input = document.getElementById('login-captcha');
+  if (label) label.textContent = `Verificação: quanto é ${op.label}?`;
+  if (input) input.value = '';
+}
+
+// Gera captcha ao carregar
+document.addEventListener('DOMContentLoaded', gerarCaptcha);
+
 // ── Utilitários ────────────────────────────────────
 function clearErrors() {
   document.querySelectorAll('.field-err').forEach(el => el.textContent = '');
@@ -56,6 +78,12 @@ document.getElementById('btn-login').addEventListener('click', async () => {
   }
   if (!senha) {
     setErr('err-login-senha', 'Digite sua senha.');
+    hasErr = true;
+  }
+  const captchaVal = parseInt((document.getElementById('login-captcha').value || '').trim(), 10);
+  if (isNaN(captchaVal) || captchaVal !== _captchaAnswer) {
+    setErr('err-login-captcha', 'Resposta incorreta. Tente novamente.');
+    gerarCaptcha();
     hasErr = true;
   }
   if (hasErr) return;
