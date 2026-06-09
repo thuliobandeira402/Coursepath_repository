@@ -265,4 +265,5 @@ CREATE TABLE IF NOT EXISTS article_status (
 Desenvolvido por **Thulio Bandeira e Rivan Barroso**
 Curso: Bacharelado em Sistemas de Informação — UFRPE
 Repositório: [github.com/thuliobandeira402/Coursepath_repository](https://github.com/thuliobandeira402/Coursepath_repository)
+
 Acesse o Drive: [https://drive.google.com/drive/u/1/folders/17BP3I00TOmk3vYRExs75DUxPmVBqaOv5](https://drive.google.com/drive/u/1/folders/17BP3I00TOmk3vYRExs75DUxPmVBqaOv5)
