@@ -1,8 +1,8 @@
-[README.md](https://github.com/user-attachments/files/27173340/README.md)
-
 # 👾 CoursePath 🤖
 
-**CoursePath** é uma aplicação de terminal desenvolvida em Python com o objetivo de facilitar o acesso de estudantes da UFRPE a materiais de estudo. A plataforma oferece conteúdos organizados por curso, semestre e disciplina, com suporte integrado à tradução automática de textos e artigos científicos para múltiplos idiomas.
+**CoursePath** é uma plataforma web voltada à agregação de conteúdos educacionais e à redução de barreiras linguísticas por meio de tradução dinâmica. A plataforma centraliza materiais acadêmicos organizados por semestre e disciplina para estudantes da UFRPE, integrando funcionalidades de inteligência artificial para geração de resumos e quizzes automáticos via API do Gemini.
+
+> **Release 2** — versão web completa, evoluída a partir da aplicação de terminal da Release 1.
 
 ---
 
@@ -15,6 +15,7 @@
 - [Instalação](#-instalação)
 - [Como Usar](#-como-usar)
 - [Fluxo da Aplicação](#-fluxo-da-aplicação)
+- [API REST](#-api-rest)
 - [Autenticação e Validações](#-autenticação-e-validações)
 - [Banco de Dados](#-banco-de-dados)
 
@@ -24,74 +25,55 @@
 
 ### 🔐 Sistema de Autenticação
 - **Cadastro** de usuário com validação de nome, e-mail institucional (`NOME.SOBRENOME@UFRPE.BR`) e senha segura
-- **Login** com verificação de credenciais no banco de dados
+- **Login** com verificação de credenciais e **CAPTCHA matemático** de segurança
 - **Recuperação de senha** diretamente pelo fluxo de login
-- **Revisão de dados** pós-cadastro com opção de edição imediata
+- **Gerenciamento de perfil** pelo dashboard: alteração de nome, e-mail e senha; exclusão de conta com confirmação
 
-### ⚙️ Configurações do Usuário
-- Alteração de nome, e-mail e senha a qualquer momento
-- **Exclusão de conta** com confirmação de segurança
+### 📚 Conteúdo por Semestre e Disciplina
+- Navegação por **1º e 2º semestres** com artigos organizados por disciplina
+- **Filtragem** de artigos por semestre, disciplina ou nome via campo de busca
+- **Marcação de artigos como lidos** com listagem separada de artigos já lidos
+- **Sistema de favoritos**: adicionar/remover artigos favoritos e acessá-los em aba dedicada
+- **Adição de artigos externos** pelo próprio usuário, com campos de título, autores, disciplina, semestre, introdução e URL
 
-### 📚 Conteúdo por Curso e Disciplina
-- Acesso ao curso de **BSI – Bacharelado em Sistemas de Informação**
-- Navegação por **semestres** (1º e 2º períodos) e suas respectivas **disciplinas/cadeiras**
-- Cada disciplina exibe uma **descrição introdutória** e dá acesso a **2 artigos científicos** relacionados
-- Menus com reexibição automática do cabeçalho em caso de opção inválida (via função `imprimir_cabecalho()`)
-- Disciplinas disponíveis:
-  - **1º Semestre:** Projeto Interdisciplinar, Fundamentos Matemáticos, Princípios de Programação, Sustentabilidade e Sistemas de Informação, Introdução a Sistemas de Administração
-  - **2º Semestre:** Projeto Interdisciplinar 02, Fundamentos Matemáticos 02, Fundamentos de Problemas Computacionais, Elementos de Sistemas Computacionais, Fundamentos de Sistemas de Informação
+### 🌍 Tradução Dinâmica
+- Tradução automática da introdução dos artigos via **Google Translator** (`deep-translator`)
+- Suporte a múltiplos idiomas: inglês, espanhol, francês, alemão, italiano, russo, japonês, chinês, entre outros
+- Alternância dinâmica entre o idioma traduzido e o **português original** sem sair da tela
 
-### 🌍 Tradução Integrada
-- Tradução automática dos conteúdos e artigos via **Google Translator**
-- Suporte a múltiplos idiomas: inglês, português, espanhol, francês, alemão, italiano, russo, japonês, chinês e mais
-- Alternância dinâmica entre o idioma traduzido e o **português original** em qualquer tela de conteúdo — inclusive nas telas de cada disciplina individualmente
-- **Adição de artigos personalizados:** o usuário pode colar qualquer abstract ou texto, escolher o idioma de destino e receber a tradução instantânea com reexibição do cabeçalho em caso de opção inválida
+### 🤖 Inteligência Artificial (API Gemini)
+- **Geração de resumo acadêmico** contextualizado à disciplina e ao semestre, estruturado em três seções: Visão Geral, Principais Conceitos e Relevância Acadêmica
+- **Geração automática de quiz** de múltipla escolha com 5 questões — disponível apenas após o artigo ser marcado como lido — com alternativas, resposta correta e explicação
 
 ---
 
 ## 📁 Estrutura do Projeto
 
 ```
-CoursePath/
+coursepath/
 │
-├── main.py                        # Ponto de entrada da aplicação
+├── backend/
+│   ├── app.py               # API REST Flask — todas as rotas da aplicação
+│   ├── database.py          # Gerenciamento do banco SQLite3 (UserRepository, ArticleRepository)
+│   ├── seed_articles.py     # Artigos iniciais pré-carregados no banco
+│   └── requirements.txt     # Dependências Python do backend
 │
-├── menus/                         # Módulos de navegação por menus
-│   ├── menuinicial.py             # Tela inicial (cadastro / login / sair)
-│   ├── menuprincipal.py           # Menu principal do usuário logado
-│   ├── cursos.py                  # Menu de cursos disponíveis (com imprimir_cabecalho)
-│   ├── menubsi.py                 # Apresentação do curso de BSI (com imprimir_cabecalho)
-│   ├── semestre.py                # Seleção de semestre (com imprimir_cabecalho)
-│   ├── menucadeiras.py            # Menus individuais de cada disciplina com textos introdutórios,
-│   │                              # artigos e controle de tradução (com imprimir_cabecalho)
-│   └── adicionartigos.py          # Fluxo para adicionar e traduzir artigos personalizados
-│                                  # (com imprimir_cabecalho)
+├── frontend/
+│   ├── index.html           # Tela de login e cadastro
+│   └── pages/
+│       └── dashboard.html   # Dashboard principal (artigos, perfil, quiz, tradução)
 │
-├── cadeiras/                      # Listagem e navegação de cadeiras por período
-│   ├── cadeirasperiodo1.py        # Menu de cadeiras do 1º semestre (com imprimir_cabecalho)
-│   └── cadeirasperiodo2.py        # Menu de cadeiras do 2º semestre (com imprimir_cabecalho)
+├── css/
+│   ├── style.css            # Estilos globais e tela de autenticação
+│   └── dashboard.css        # Estilos do dashboard
 │
-├── articles/                      # Artigos científicos por disciplina
-│   ├── artigos_periodo1.py        # Artigos do 1º período
-│   └── artigos_periodo2.py        # Artigos do 2º período
+├── js/
+│   ├── api.js               # Funções de consumo da API REST
+│   ├── auth.js              # Lógica de autenticação (login, cadastro, CAPTCHA)
+│   ├── dashboard.js         # Interface do dashboard (artigos, quiz, tradução, favoritos)
+│   └── profile.js           # Gerenciamento de perfil do usuário
 │
-├── user/                          # Módulos relacionados ao usuário
-│   ├── cadastro.py                # Fluxo de cadastro
-│   ├── login.py                   # Fluxo de login e recuperação de senha
-│   ├── read.py                    # Leitura e confirmação de dados cadastrados
-│   ├── update_fluxo.py            # Atualização de nome e e-mail
-│   ├── recoverypassword.py        # Recuperação de senha
-│   └── userconfig.py              # Menu de configurações do usuário (CRUD)
-│
-├── sqlite/                        # Camada de banco de dados
-│   └── database.py                # Funções CRUD com SQLite
-│
-├── others/                        # Utilitários e tradutor
-│   ├── utils.py                   # Funções auxiliares e opções de menu variáveis por idioma
-│   └── tradutor.py                # Integração com Google Translator
-│
-└── verifications/                 # Validações de entrada
-    └── checagem_email_senha_nome.py  # Regex para e-mail, nome e senha
+└── coursepath.db            # Banco de dados SQLite3 (gerado automaticamente)
 ```
 
 ---
@@ -100,12 +82,16 @@ CoursePath/
 
 | Tecnologia | Uso |
 |---|---|
-| **Python 3.x** | Linguagem principal |
-| **SQLite3** | Banco de dados local para usuários |
+| **Python 3.x** | Linguagem principal do backend |
+| **Flask** | Framework web para a API REST |
+| **Flask-CORS** | Compartilhamento de recursos entre origens (frontend ↔ backend) |
+| **SQLite3** | Banco de dados local para usuários e artigos |
 | **deep-translator** | Tradução automática via Google Translator |
-| **re (Regex)** | Validação de e-mail, nome e senha |
-| **textwrap** | Formatação de texto no terminal |
-| **os / time** | Utilitários de sistema e controle de tempo |
+| **Gemini API** | Geração de resumos e quizzes com IA (modelo `gemini-2.5-flash`) |
+| **urllib.request** | Requisições HTTP à API do Gemini (sem dependência extra) |
+| **re (Regex)** | Validação de e-mail e senha; limpeza de resposta JSON do Gemini |
+| **hashlib** | Criptografia de senhas |
+| **HTML5 / CSS3 / JavaScript** | Frontend completo da aplicação |
 
 ---
 
@@ -113,10 +99,7 @@ CoursePath/
 
 - Python 3.8 ou superior
 - pip (gerenciador de pacotes Python)
-- Biblioteca `deep-translator`:
-```bash
-pip install deep-translator
-```
+- Um servidor local para o frontend (ex: extensão **Live Server** do VS Code)
 
 ---
 
@@ -128,59 +111,92 @@ git clone https://github.com/thuliobandeira402/Coursepath_repository.git
 cd Coursepath_repository
 ```
 
-**2. Instale as dependências:**
+**2. Instale as dependências do backend:**
 ```bash
-pip install deep-translator
+pip install flask flask-cors deep-translator
 ```
 
-**3. Execute a aplicação:**
+Ou via arquivo de requirements:
 ```bash
-python main.py
+pip install -r backend/requirements.txt
 ```
 
-> O banco de dados `banco.db` será criado automaticamente na primeira execução.
+**3. Inicie o backend:**
+```bash
+cd backend
+python app.py
+```
+
+> O banco de dados `coursepath.db` será criado e populado automaticamente na primeira execução.
+
+**4. Abra o frontend:**
+
+Abra `frontend/index.html` com o Live Server (VS Code) ou qualquer servidor HTTP local. O backend deve estar rodando em `http://localhost:5000`.
 
 ---
 
 ## 🖥 Como Usar
 
-Ao iniciar o programa, você verá o menu inicial:
+Ao acessar a aplicação, você verá a tela de autenticação:
 
-```
-==================================================
-|                👾 COURSEPATH 🤖                |
-==================================================
-| Escolha:                                       |
-|    [1]. Cadastrar-se                           |
-|    [2]. Login                                  |
-|    [3]. Sair                                   |
-==================================================
-```
+- **Cadastro:** preencha nome, e-mail institucional (`nome.sobrenome@ufrpe.br`) e senha
+- **Login:** informe e-mail, senha e resolva o CAPTCHA matemático exibido
 
-Após o login, o menu principal oferece:
+Após autenticado, o dashboard oferece:
 
-```
-[1]. Ver Cursos Disponíveis
-[2]. Alterar idioma do menu de cursos
-[3]. Alterar dados do usuário
-[4]. Adicionar artigo para leitura
-[5]. Sair
-```
+- **Sidebar** com navegação entre: Todos os Artigos, 1º Semestre, 2º Semestre, Artigos Lidos e Favoritos
+- **Campo de busca** para filtrar por título, disciplina ou autor
+- **Cards de artigo** com opções de: abrir PDF, marcar como lido, favoritar e traduzir introdução
+- **Modal do artigo** com tradução dinâmica, geração de resumo via IA e quiz automático (após leitura)
+- **Perfil do usuário** acessível pelo chip no topo da sidebar (editar dados ou excluir conta)
+- **Adicionar artigo externo** pelo botão dedicado no dashboard
 
 ---
 
 ## 🔄 Fluxo da Aplicação
 
 ```
-Menu Inicial
-    ├── [1] Cadastro → Validação → Confirmação de dados → (Login)
-    ├── [2] Login → Menu Principal
-    │       ├── [1] Cursos → BSI → Semestres → Cadeiras → Artigos (+ Tradução)
-    │       ├── [2] Alterar idioma global
-    │       ├── [3] Configurações do usuário (nome / e-mail / senha / deletar conta)
-    │       └── [4] Adicionar artigo → Colar texto → Traduzir
-    └── [3] Sair
+Tela de Login / Cadastro
+    ├── Cadastro → Validação (e-mail, senha, nome) → Redirecionamento ao Login
+    └── Login (+ CAPTCHA) → Dashboard
+            ├── Todos os Artigos / 1º Semestre / 2º Semestre
+            │       └── Card do Artigo
+            │               ├── Traduzir Introdução (idioma selecionável)
+            │               ├── Marcar como Lido
+            │               ├── Favoritar
+            │               ├── Gerar Resumo com IA
+            │               └── Gerar Quiz com IA (requer artigo lido)
+            ├── Artigos Lidos
+            ├── Favoritos
+            ├── Adicionar Artigo Externo
+            └── Perfil → Editar nome / e-mail / senha / Excluir conta
 ```
+
+---
+
+## 🔌 API REST
+
+O backend expõe uma API REST em `http://localhost:5000`. Principais endpoints:
+
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| `POST` | `/api/register` | Cadastro de usuário |
+| `POST` | `/api/login` | Login com sessão |
+| `POST` | `/api/logout` | Logout |
+| `GET` | `/api/me` | Dados do usuário autenticado |
+| `GET` | `/api/articles` | Listar artigos (parâmetro `?semester=1` ou `2`) |
+| `GET` | `/api/articles/<id>` | Detalhe de um artigo |
+| `POST` | `/api/articles` | Adicionar artigo externo |
+| `POST` | `/api/articles/<id>/read` | Marcar artigo como lido |
+| `GET` | `/api/articles/read` | Listar artigos lidos |
+| `POST` | `/api/articles/<id>/favorite` | Alternar favorito |
+| `GET` | `/api/articles/favorites` | Listar favoritos |
+| `GET` | `/api/articles/<id>/translate` | Traduzir introdução (parâmetro `?lang=en`) |
+| `GET` | `/api/articles/<id>/summary` | Gerar resumo com IA |
+| `POST` | `/api/articles/<id>/quiz` | Gerar quiz com IA (requer artigo lido) |
+| `GET` | `/api/user` | Dados do perfil |
+| `PUT` | `/api/user` | Atualizar nome, e-mail ou senha |
+| `DELETE` | `/api/user` | Excluir conta |
 
 ---
 
@@ -200,35 +216,53 @@ Deve conter no mínimo:
 - 1 número
 - 1 caractere especial (`!@#$%^&*` etc.)
 
-### Nome
-Deve conter apenas letras (incluindo acentuação) e espaços.
+### CAPTCHA
+Operação matemática simples gerada dinamicamente no login para impedir automações.
+
+### Senhas no banco
+Armazenadas com hash via **hashlib** — nunca em texto puro.
 
 ---
 
 ## 🗄 Banco de Dados
 
-A aplicação utiliza **SQLite** local com a seguinte estrutura de tabela:
+A aplicação utiliza **SQLite3** local. As principais tabelas são:
 
 ```sql
-CREATE TABLE IF NOT EXISTS contas_curso (
-    id    INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome  TEXT NOT NULL,
-    email TEXT UNIQUE NOT NULL,
-    senha TEXT NOT NULL
+-- Usuários
+CREATE TABLE IF NOT EXISTS users (
+    id       INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome     TEXT NOT NULL,
+    email    TEXT UNIQUE NOT NULL,
+    senha    TEXT NOT NULL
+);
+
+-- Artigos
+CREATE TABLE IF NOT EXISTS articles (
+    id           INTEGER PRIMARY KEY AUTOINCREMENT,
+    title        TEXT NOT NULL,
+    authors      TEXT,
+    subject      TEXT,
+    semester     INTEGER,
+    introduction TEXT,
+    url          TEXT
+);
+
+-- Status por usuário (lido / favorito)
+CREATE TABLE IF NOT EXISTS article_status (
+    user_id    INTEGER,
+    article_id INTEGER,
+    is_read    BOOLEAN DEFAULT 0,
+    is_favorite BOOLEAN DEFAULT 0,
+    PRIMARY KEY (user_id, article_id)
 );
 ```
-
-Operações implementadas (CRUD completo):
-- **Create:** cadastro de novo usuário
-- **Read:** busca por e-mail, exibição de dados após cadastro
-- **Update:** alteração de nome, e-mail e senha
-- **Delete:** exclusão de conta com confirmação
 
 ---
 
 ## 👨‍💻 Autores
 
-Desenvolvido por **Thulio Bandeira e Rivan Barroso**  
-Curso: Bacharelado em Sistemas de Informação — UFRPE  
-Repositório: [github.com/thuliobandeira402/Coursepath_repository](https://github.com/thuliobandeira402/Coursepath_repository)             
+Desenvolvido por **Thulio Bandeira e Rivan Barroso**
+Curso: Bacharelado em Sistemas de Informação — UFRPE
+Repositório: [github.com/thuliobandeira402/Coursepath_repository](https://github.com/thuliobandeira402/Coursepath_repository)
 Acesse o Drive: [https://drive.google.com/drive/u/1/folders/17BP3I00TOmk3vYRExs75DUxPmVBqaOv5](https://drive.google.com/drive/u/1/folders/17BP3I00TOmk3vYRExs75DUxPmVBqaOv5)
