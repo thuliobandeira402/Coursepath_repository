@@ -100,7 +100,8 @@ coursepath/
 - Python 3.8 ou superior
 - pip (gerenciador de pacotes Python)
 - Um servidor local para o frontend (ex: extensão **Live Server** do VS Code)
-- Gerar uma chave de API do gemini e substituir na linha 36 do arquivo app.py
+- Gerar uma chave de API do gemini por meio do link: https://aistudio.google.com/api-keys 
+- Inserir a chave gerada no lugar do texto "colocar_chave_aqui" na linha 36 do arquivo app.py
 ---
 
 ## 🚀 Instalação
