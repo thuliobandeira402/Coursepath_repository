@@ -100,7 +100,7 @@ coursepath/
 - Python 3.8 ou superior
 - pip (gerenciador de pacotes Python)
 - Um servidor local para o frontend (ex: extensão **Live Server** do VS Code)
-
+- Gerar uma chave de API do gemini e substituir na linha 36 do arquivo app.py
 ---
 
 ## 🚀 Instalação
