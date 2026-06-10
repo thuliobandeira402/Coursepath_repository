@@ -268,4 +268,4 @@ Repositório: [github.com/thuliobandeira402/Coursepath_repository](https://githu
 
 Acesse o Drive: [https://drive.google.com/drive/u/1/folders/17BP3I00TOmk3vYRExs75DUxPmVBqaOv5](https://drive.google.com/drive/u/1/folders/17BP3I00TOmk3vYRExs75DUxPmVBqaOv5)
 
-Link do artigo no Overleaf: https://www.overleaf.com/read/cvxkccqqqjxt#31519a
+Link do artigo no Overleaf: [https://www.overleaf.com/read/cvxkccqqqjxt#31519a](https://www.overleaf.com/read/qrmpkxzdxjdh#b7124d)
