@@ -77,7 +77,7 @@ class Database:
         self.conn.close()
 
 
-# Singleton global
+
 _db_instance = None
 
 def get_db() -> Database:

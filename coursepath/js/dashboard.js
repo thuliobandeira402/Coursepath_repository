@@ -33,6 +33,39 @@ state.user = JSON.parse(saved);
   await carregarArtigos();
 })();
 
+// ── Trocar tema claro/escuro ────────────────────────
+
+function trocar_tema() {
+  const html = document.documentElement;
+  const btn  = document.querySelector('.changetheme-btn');
+
+  if (html.classList.contains('dark')) {
+    // Voltar ao tema escuro (padrão)
+    html.classList.remove('dark');
+    localStorage.setItem('theme', 'dark');
+    if (btn) btn.title = 'Modo claro';
+  } else {
+    // Ativar tema claro
+    html.classList.add('dark');
+    localStorage.setItem('theme', 'light');
+    if (btn) btn.title = 'Modo escuro';
+  }
+}
+
+// Aplica o tema salvo assim que o script carrega
+(function aplicarTemaSalvo() {
+  const tema = localStorage.getItem('theme');
+  const btn  = document.querySelector('.changetheme-btn');
+  if (tema === 'light') {
+    document.documentElement.classList.add('dark');
+    if (btn) btn.title = 'Modo escuro';
+  } else {
+    document.documentElement.classList.remove('dark');
+    if (btn) btn.title = 'Modo claro';
+  }
+})();
+
+
 // ── Carregamento de artigos ─────────────────────────
 async function carregarArtigos(semester = null) {
   mostrarLoading();
@@ -447,7 +480,7 @@ async function gerarResumo() {
     }
 
   } catch (e) {
-    body.innerHTML = `<p style="color:var(--err)">Erro ao gerar resumo: ${e.message}</p>`;
+    body.innerHTML = `<p style="color:var(--err)">Erro ao gerar resumo:  IA temporariamente indisponível, tente novamente</p>`;
     btn.disabled = false;
     btn.textContent = 'Tentar novamente';
   }
@@ -533,7 +566,7 @@ async function iniciarQuiz() {
     btn.textContent = '↺ Novo Quiz';
     btn.disabled = false;
   } catch (e) {
-    body.innerHTML = `<p style="color:var(--err)">Erro ao gerar quiz: ${e.message}</p>`;
+    body.innerHTML = `<p style="color:var(--err)">Erro ao gerar quiz:  IA temporariamente indisponível, tente novamente</p>`;
     btn.disabled = false;
     btn.textContent = 'Tentar novamente';
   }

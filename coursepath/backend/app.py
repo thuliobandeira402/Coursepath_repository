@@ -33,7 +33,7 @@ article_repo = ArticleRepository(db)
 article_repo.seed(ARTICLES)
 
 # ── Gemini API config ──────────────────────────────────────────────────────────
-GEMINI_API_KEY = "AQ.Ab8RN6JVs723lLHO3mg1X-D-wIbZ_RtlBB9UcR-GHqwGSGIWSQ"
+GEMINI_API_KEY = "colocar_chave_Aqui"
 
 GEMINI_MODEL   = "gemini-2.5-flash"
 GEMINI_API_URL = (
@@ -382,8 +382,9 @@ Retorne APENAS um JSON válido neste formato exato:
   ]
 }}"""
 
+
     try:
-        text = _call_gemini(prompt, max_tokens=2000)
+        text = _call_gemini(prompt, max_tokens=3000)
         text = re.sub(r"```json|```", "", text).strip()
         quiz = json.loads(text)
         return _json(quiz)

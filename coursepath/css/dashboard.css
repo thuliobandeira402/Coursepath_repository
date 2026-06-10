@@ -13,7 +13,7 @@
 .sidebar {
   width: 240px;
   min-width: 240px;
-  background: rgba(14,21,32,0.95);
+  background: var(--surface);
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
@@ -38,10 +38,8 @@
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 18px;
-  background: linear-gradient(135deg, #f0f4ff, #93c5fd);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text);
+  -webkit-text-fill-color: var(--text);
 }
 
 /* ── Nav ─────────────────────────────────────────── */
@@ -128,6 +126,19 @@
 }
 .logout-btn:hover { border-color: var(--err); color: var(--err); }
 
+
+.changetheme-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text3);
+  font-size: 16px;
+  padding: 6px 8px;
+  cursor: pointer;
+  transition: border-color .2s, color .2s;
+  flex-shrink: 0;
+}
+.changetheme-btn:hover { border-color: var(--teal); color: var(--accent2); }
 /* ── Main wrap ───────────────────────────────────── */
 .main-wrap {
   margin-left: 240px;
@@ -149,7 +160,7 @@
   align-items: center;
   gap: 16px;
   padding: 0 28px;
-  background: rgba(8,12,20,0.6);
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
   backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
@@ -290,7 +301,7 @@
 }
 .badge-subject {
   background: rgba(14,165,233,.12);
-  color: #7dd3fc;
+  color: var(--teal);
   border: 1px solid rgba(14,165,233,.2);
 }
 .badge-read {
@@ -398,7 +409,7 @@
   overflow-y: auto;
   position: relative;
   animation: slideIn .3s ease;
-  box-shadow: 0 32px 80px rgba(0,0,0,.7);
+  box-shadow: var(--shadow-card);
 }
 .modal::-webkit-scrollbar { width: 4px; }
 .modal::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 4px; }
@@ -552,19 +563,19 @@
 }
 .quiz-option.correct {
   border-color: var(--ok);
-  background: rgba(74,222,128,.1);
+  background: color-mix(in srgb, var(--ok) 12%, transparent);
   color: var(--ok);
 }
 .quiz-option.wrong {
   border-color: var(--err);
-  background: rgba(248,113,113,.1);
+  background: color-mix(in srgb, var(--err) 12%, transparent);
   color: var(--err);
 }
 .quiz-option:disabled { cursor: default; }
 .quiz-explanation {
   margin-top: 8px;
   padding: 10px 14px;
-  background: rgba(255,255,255,.04);
+  background: var(--surface2);
   border-radius: 8px;
   font-size: 12.5px;
   color: var(--text2);
@@ -632,7 +643,7 @@
   outline: none;
   border-color: var(--accent, #cba6f7);
 }
-.field-err { font-size: 12px; color: #f38ba8; min-height: 14px; }
+.field-err { font-size: 12px; color: var(--err); min-height: 14px; }
 
 /* ── Fix resumo: overflow e altura adequada ────────── */
 .resumo-body {
@@ -646,3 +657,30 @@
 }
 .resumo-body::-webkit-scrollbar { width: 4px; }
 .resumo-body::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 4px; }
+
+/* ── Overrides tema claro ────────────────────────── */
+html.dark .topbar {
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+}
+html.dark .modal-overlay {
+  background: rgba(15,23,42,0.6);
+}
+html.dark .article-card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+html.dark .badge-semester {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+html.dark .badge-subject {
+  background: color-mix(in srgb, var(--teal) 12%, transparent);
+  border-color: color-mix(in srgb, var(--teal) 25%, transparent);
+}
+html.dark .badge-read {
+  background: color-mix(in srgb, var(--ok) 12%, transparent);
+  border-color: color-mix(in srgb, var(--ok) 25%, transparent);
+}
+html.dark .badge-fav {
+  background: color-mix(in srgb, var(--warn) 12%, transparent);
+  border-color: color-mix(in srgb, var(--warn) 25%, transparent);
+}
